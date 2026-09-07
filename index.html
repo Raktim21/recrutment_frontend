@@ -131,85 +131,126 @@
         </div>
 
         <!-- Visual column -->
-        <div class="space-y-6 sm:space-y-8 lg:order-1">
+        <div class="lg:order-1">
+         <div class="hero-stage rounded-2xl border border-border bg-card p-3 sm:p-4">
 
-        <!-- Animated illustration -->
-        <img
-          src="images/hero/heroill-animated.svg"
-          width="542"
-          height="156"
-          alt="A candidate uploads their CV, then an employer searches, scans the results and emails the candidate"
-          class="w-full h-auto block"
-        />
+          <p class="sr-only">A candidate uploads their CV, then an employer searches, scans the results and emails the candidate.</p>
 
-        <!-- Carousel -->
-        <div id="heroCarousel" data-carousel class="relative rounded-2xl overflow-hidden border border-border">
+          <!-- Candidate / employer panels -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4" aria-hidden="true">
+
+            <!-- Candidate -->
+            <div class="stage-panel" data-role="candidate">
+              <p class="stage-eyebrow">Candidate</p>
+              <p class="stage-title">
+                <svg class="w-4 h-4 shrink-0 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 17v-5m0 0-2 2m2-2 2 2"/></svg>
+                Upload Your CV
+              </p>
+              <div class="stage-drop">
+                <div class="stage-file">
+                  <span class="stage-filename">alex-ryan-cv.pdf</span>
+                  <span class="stage-check">✓</span>
+                </div>
+                <span class="stage-track"><span class="stage-prog"></span></span>
+              </div>
+            </div>
+
+            <!-- Employer -->
+            <div class="stage-panel" data-role="employer">
+              <p class="stage-eyebrow">Employer</p>
+              <div class="stage-search">
+                <svg class="stage-magnifier w-4 h-4 shrink-0 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="m20 20-3.5-3.5"/></svg>
+                <span class="stage-field">
+                  <span class="stage-placeholder">Search millions of live CVs</span>
+                  <span class="stage-query">Data specialist, Berlin</span>
+                </span>
+                <span class="stage-ripple"></span>
+              </div>
+              <div class="stage-results">
+                <p class="stage-result"><span class="stage-result-text" data-result-primary>Data specialist · Berlin</span></p>
+                <p class="stage-result stage-result-2"><span class="stage-result-text">Product designer · Lisbon</span></p>
+                <span class="stage-scanframe"></span>
+                <span class="stage-scan"></span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Carousel -->
+          <div id="heroCarousel" data-carousel data-start="7" data-sync-target="[data-result-primary]" class="relative rounded-xl overflow-hidden border border-border">
           <div class="relative aspect-[16/10] bg-card">
 
-            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-100">
+            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0" data-result="Talent partner · Amsterdam">
               <img src="images/hero/1.jpg" alt="AI-powered candidate analysis dashboard" class="w-full h-full object-cover" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
               <span class="hero-badge">Recruiting team</span>
             </div>
 
-            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0" data-result="Senior strategist · Copenhagen">
               <img src="images/hero/2.jpg" alt="Candidate uploading her resume" class="w-full h-full object-cover" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
               <span class="hero-badge">Senior strategist</span>
             </div>
 
-            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0" data-result="Production operative · Rotterdam">
               <img src="images/hero/3.jpg" alt="Engineer uploading her CV on site" class="w-full h-full object-cover" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
               <span class="hero-badge">Factory worker</span>
             </div>
 
-            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0" data-result="Operations lead · Dublin">
               <img src="images/hero/4.jpg" alt="Employer hiring a top candidate" class="w-full h-full object-cover" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
               <span class="hero-badge">Hired</span>
             </div>
 
-            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0" data-result="Chief executive · Zurich">
               <img src="images/hero/5.jpg" alt="Executive reviewing team and revenue overview" class="w-full h-full object-cover" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
               <span class="hero-badge">Chief executive</span>
             </div>
 
-            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0" data-result="Software engineer · Kraków">
               <img src="images/hero/6.jpg" alt="Team collaborating on a hiring plan" class="w-full h-full object-cover" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
               <span class="hero-badge">Software engineer</span>
             </div>
 
-            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0" data-result="Marketing manager · Madrid">
               <img src="images/hero/7.jpg" alt="Candidate preparing for an interview" class="w-full h-full object-cover" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
               <span class="hero-badge">Marketing candidate</span>
             </div>
 
-            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-100" data-result="Data specialist · Berlin">
               <img src="images/hero/8.jpg" alt="Recruiter reviewing candidate profiles" class="w-full h-full object-cover" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
               <span class="hero-badge">Data specialist</span>
             </div>
 
-            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0" data-result="People coordinator · Porto">
               <img src="images/hero/9.jpg" alt="New hire onboarding at their workplace" class="w-full h-full object-cover" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
               <span class="hero-badge">Onboarding</span>
             </div>
 
-            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0" data-result="Warehouse supervisor · Manchester">
               <img src="images/hero/10.jpg" alt="Team celebrating a successful placement" class="w-full h-full object-cover" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
               <span class="hero-badge">On the floor</span>
             </div>
 
           </div>
+          </div>
+
+          <!-- Transient: the employer's reply travelling back to the candidate -->
+          <span class="stage-envelope" aria-hidden="true">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="m3 7 9 6 9-6"/></svg>
+          </span>
+
+         </div>
         </div>
 
-        </div>
       </div>
      </div>
     </section>
@@ -223,7 +264,7 @@
         <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
           <div class="rounded-2xl overflow-hidden border border-border bg-card">
             <div class="aspect-[16/10]">
-              <img src="/images/banners/3.jpg" alt="Uploading a CV" class="w-full h-full object-cover" />
+              <img src="images/banners/3.jpg" alt="Uploading a CV" class="w-full h-full object-cover" />
             </div>
             <div class="p-6">
               <div class="flex items-center gap-3 mb-4">
@@ -240,7 +281,7 @@
 
           <div class="rounded-2xl overflow-hidden border border-border bg-card">
             <div class="aspect-[16/10]">
-              <img src="/images/banners/4.jpg" alt="Searching for candidates" class="w-full h-full object-cover" />
+              <img src="images/banners/4.jpg" alt="Searching for candidates" class="w-full h-full object-cover" />
             </div>
             <div class="p-6">
               <div class="flex items-center gap-3 mb-4">
@@ -257,7 +298,7 @@
 
           <div class="rounded-2xl overflow-hidden border border-border bg-card">
             <div class="aspect-[16/10]">
-              <img src="/images/banners/5.jpg" alt="Connecting and hiring" class="w-full h-full object-cover" />
+              <img src="images/banners/5.jpg" alt="Connecting and hiring" class="w-full h-full object-cover" />
             </div>
             <div class="p-6">
               <div class="flex items-center gap-3 mb-4">

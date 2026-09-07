@@ -6,12 +6,28 @@ document.addEventListener('DOMContentLoaded', () => {
     let active = Number(root.dataset.start) || 0;
     let timer;
 
+    // Optional: mirror the active slide's role into an element elsewhere on
+    // the page, so the hero's search result tracks the photo on show.
+    const syncTarget =
+      root.dataset.syncTarget && document.querySelector(root.dataset.syncTarget);
+
+    const sync = (slide) => {
+      const label = slide.dataset.result;
+      if (!syncTarget || !label || syncTarget.textContent === label) return;
+      syncTarget.style.opacity = '0';
+      setTimeout(() => {
+        syncTarget.textContent = label;
+        syncTarget.style.opacity = '';
+      }, 250);
+    };
+
     const goTo = (index) => {
       active = (index + slides.length) % slides.length;
       slides.forEach((slide, i) => {
         slide.classList.toggle('opacity-100', i === active);
         slide.classList.toggle('opacity-0', i !== active);
       });
+      sync(slides[active]);
     };
 
     const autoplay = () => {

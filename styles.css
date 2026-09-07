@@ -1,18 +1,3 @@
-.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.35);
-  display: inline-block;
-  transition: all 0.2s ease;
-}
-
-.dot-active {
-  width: 20px;
-  border-radius: 9999px;
-  background: #00bfff;
-}
-
 .check {
   display: inline-flex;
   align-items: center;
@@ -68,6 +53,440 @@
     bottom: 20px;
     left: 20px;
   }
+}
+
+/* ------------------------------------------------------------------
+   Hero stage — candidate + employer panels above the photo carousel,
+   all in one card. Ports the storyboard that used to live inside
+   heroill-animated.svg onto real elements, so it takes site tokens.
+   ------------------------------------------------------------------ */
+
+.hero-stage {
+  position: relative;
+  container-type: inline-size;
+}
+
+/* --- Panels ------------------------------------------------------- */
+
+.stage-panel {
+  position: relative;
+  padding: 1rem;
+  border: 1px solid #273857;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Focus ring — the light moves from one panel to the other, standing in
+   for the elbow connector the old SVG drew between the two cards. */
+.stage-panel::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  box-shadow: 0 0 0 1px #2981fb, 0 0 24px rgba(41, 129, 251, 0.18);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stage-panel[data-role="candidate"]::after {
+  animation-name: stage-focus-l;
+}
+
+.stage-panel[data-role="employer"]::after {
+  animation-name: stage-focus-r;
+}
+
+.stage-eyebrow {
+  margin-bottom: 0.75rem;
+  font-family: "Stack Sans Text", Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #99a6b8;
+}
+
+.stage-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-family: "Stack Sans Text", Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* --- Candidate: upload -------------------------------------------- */
+
+.stage-drop {
+  padding: 0.75rem 0.875rem;
+  border: 1px dashed #273857;
+  border-radius: 10px;
+  background: #09122a;
+  animation-name: stage-row-in;
+}
+
+.stage-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.625rem;
+}
+
+.stage-filename {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stage-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: rgba(41, 129, 251, 0.15);
+  color: #2981fb;
+  font-size: 10px;
+  font-weight: 700;
+  opacity: 0;
+  animation-name: stage-check;
+}
+
+.stage-track {
+  display: block;
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.stage-prog {
+  display: block;
+  height: 100%;
+  border-radius: 9999px;
+  background: #2981fb;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation-name: stage-prog;
+}
+
+/* --- Employer: search --------------------------------------------- */
+
+.stage-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.625rem;
+  padding: 0.6875rem 1rem;
+  border: 1px solid #273857;
+  border-radius: 9999px;
+  background: #000000;
+}
+
+.stage-magnifier {
+  animation-name: stage-tap;
+}
+
+/* Placeholder and typed query share one grid cell: the placeholder sizes
+   the field, the query overlays it, so typing shifts nothing. */
+.stage-field {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+
+.stage-field > * {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+.stage-placeholder {
+  font-size: 0.8125rem;
+  color: #99a6b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  animation-name: stage-placeholder;
+}
+
+/* Sized by its own text (justify-self keeps it from stretching to the cell),
+   then revealed by clamping max-width — so the caret rides the end of the
+   typed string instead of the end of the grid cell. */
+.stage-query {
+  justify-self: start;
+  width: max-content;
+  max-width: 0;
+  font-size: 0.8125rem;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 1.5px solid #2981fb;
+  opacity: 0;
+  animation-name: stage-type, stage-query-fade;
+  animation-timing-function: steps(23, end), ease;
+}
+
+.stage-ripple {
+  position: absolute;
+  top: 50%;
+  left: 0.6875rem;
+  width: 26px;
+  height: 26px;
+  margin-top: -13px;
+  border: 1.5px solid #2981fb;
+  border-radius: 9999px;
+  opacity: 0;
+  pointer-events: none;
+  animation-name: stage-ripple;
+}
+
+/* --- Employer: results -------------------------------------------- */
+
+.stage-results {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: hidden;
+}
+
+.stage-result {
+  position: relative;
+  padding: 0.625rem 1rem;
+  border: 1px solid #273857;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  animation-name: stage-res;
+}
+
+.stage-result-2 {
+  animation-name: stage-res-2;
+}
+
+/* Inner span carries the carousel-sync cross-fade, so it never fights the
+   pill's own opacity animation. */
+.stage-result-text {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity 0.25s ease;
+}
+
+.stage-result:first-child::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 1px #2981fb, 0 0 18px rgba(41, 129, 251, 0.22);
+  opacity: 0;
+  pointer-events: none;
+  animation-name: stage-ring;
+}
+
+.stage-scanframe {
+  position: absolute;
+  inset: 0;
+  border: 1px dashed #2981fb;
+  border-radius: 12px;
+  opacity: 0;
+  pointer-events: none;
+  animation-name: stage-scanframe;
+}
+
+.stage-scan {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(
+    180deg,
+    rgba(41, 129, 251, 0) 0%,
+    rgba(41, 129, 251, 0.18) 70%,
+    rgba(41, 129, 251, 0) 100%
+  );
+  border-bottom: 1.5px solid #2981fb;
+  opacity: 0;
+  pointer-events: none;
+  animation-name: stage-scan;
+}
+
+/* --- The reply travelling back to the candidate -------------------- */
+
+/* Anchored in px, not %, because the card's height is dominated by the
+   carousel — this offset tracks the result row / drop zone, which sit at a
+   stable height once the panels are side by side. */
+.stage-envelope {
+  position: absolute;
+  top: 115px;
+  left: 72%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  background: #2981fb;
+  color: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  animation-name: stage-envelope;
+}
+
+/* Only meaningful once the panels sit side by side. */
+@media (min-width: 640px) {
+  .stage-panel {
+    padding: 1.25rem;
+  }
+
+  .stage-title {
+    font-size: 1rem;
+  }
+
+  .stage-envelope {
+    display: inline-flex;
+  }
+}
+
+@supports not (width: 1cqw) {
+  .stage-envelope {
+    display: none;
+  }
+}
+
+/* --- Shared 13s loop ---------------------------------------------- */
+
+.stage-panel::after,
+.stage-drop,
+.stage-check,
+.stage-prog,
+.stage-magnifier,
+.stage-placeholder,
+.stage-query,
+.stage-ripple,
+.stage-result,
+.stage-result:first-child::after,
+.stage-scanframe,
+.stage-scan,
+.stage-envelope {
+  animation-duration: 13s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+
+@keyframes stage-focus-l {
+  0%, 38% { opacity: 1; }
+  44%, 100% { opacity: 0; }
+}
+
+@keyframes stage-focus-r {
+  0%, 38% { opacity: 0; }
+  44%, 95% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes stage-row-in {
+  0% { opacity: 0; transform: translateY(6px); }
+  8%, 97% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: translateY(6px); }
+}
+
+@keyframes stage-prog {
+  0%, 9% { transform: scaleX(0); }
+  31%, 100% { transform: scaleX(1); }
+}
+
+@keyframes stage-check {
+  0%, 32% { opacity: 0; transform: scale(0.4); }
+  36% { opacity: 1; transform: scale(1.15); }
+  38%, 97% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.4); }
+}
+
+@keyframes stage-placeholder {
+  0%, 41% { opacity: 1; }
+  44%, 92% { opacity: 0; }
+  97%, 100% { opacity: 1; }
+}
+
+/* Overshoots the string's real width; the trailing steps are no-ops, which
+   reads as the caret resting after the last character. */
+@keyframes stage-type {
+  0%, 43% { max-width: 0; }
+  54%, 100% { max-width: 260px; }
+}
+
+@keyframes stage-query-fade {
+  0%, 42% { opacity: 0; border-right-color: transparent; }
+  43%, 88% { opacity: 1; border-right-color: #2981fb; }
+  92%, 100% { opacity: 0; border-right-color: transparent; }
+}
+
+@keyframes stage-tap {
+  0%, 54% { transform: scale(1); }
+  57% { transform: scale(0.82); }
+  60%, 100% { transform: scale(1); }
+}
+
+@keyframes stage-ripple {
+  0%, 54% { opacity: 0; transform: scale(0.5); }
+  56% { opacity: 0.7; transform: scale(0.6); }
+  62%, 100% { opacity: 0; transform: scale(1.9); }
+}
+
+@keyframes stage-scanframe {
+  0%, 57% { opacity: 0; }
+  59%, 71% { opacity: 0.55; }
+  74%, 100% { opacity: 0; }
+}
+
+/* Two passes down the results area. */
+@keyframes stage-scan {
+  0%, 57% { opacity: 0; transform: translateY(-100%); }
+  59% { opacity: 1; }
+  64% { opacity: 1; transform: translateY(170%); }
+  64.01% { opacity: 0; transform: translateY(-100%); }
+  66% { opacity: 1; }
+  71% { opacity: 1; transform: translateY(170%); }
+  72%, 100% { opacity: 0; transform: translateY(170%); }
+}
+
+@keyframes stage-res {
+  0%, 69% { opacity: 0; transform: translateY(6px); }
+  75%, 97% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: translateY(6px); }
+}
+
+@keyframes stage-res-2 {
+  0%, 73% { opacity: 0; transform: translateY(6px); }
+  79%, 97% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: translateY(6px); }
+}
+
+@keyframes stage-ring {
+  0%, 77% { opacity: 0; }
+  80%, 90% { opacity: 1; }
+  95%, 100% { opacity: 0; }
+}
+
+@keyframes stage-envelope {
+  0%, 81% { opacity: 0; transform: translate(0, 0) scale(0.6); }
+  84% { opacity: 1; transform: translate(-8cqw, -12px) scale(1); }
+  89% { opacity: 1; transform: translate(-40cqw, -14px) scale(1); }
+  92% { opacity: 1; transform: translate(-46cqw, 0) scale(1); }
+  95%, 100% { opacity: 0; transform: translate(-46cqw, 0) scale(0.6); }
 }
 
 .carousel-arrow {
@@ -412,7 +831,48 @@
   .seg-tab,
   .faq-item,
   .faq-icon,
-  .faq-a {
+  .faq-a,
+  .stage-result-text {
     transition-duration: 0.01ms;
+  }
+
+  /* Freeze the hero stage on its resting frame: upload part-way, both
+     results listed, every transient element gone. */
+  .stage-panel::after,
+  .stage-drop,
+  .stage-check,
+  .stage-prog,
+  .stage-magnifier,
+  .stage-placeholder,
+  .stage-query,
+  .stage-ripple,
+  .stage-result,
+  .stage-result:first-child::after,
+  .stage-scanframe,
+  .stage-scan,
+  .stage-envelope {
+    animation: none !important;
+  }
+
+  .stage-drop,
+  .stage-placeholder,
+  .stage-result {
+    opacity: 1;
+    transform: none;
+  }
+
+  .stage-prog {
+    transform: scaleX(0.72);
+  }
+
+  .stage-panel::after,
+  .stage-check,
+  .stage-query,
+  .stage-ripple,
+  .stage-result:first-child::after,
+  .stage-scanframe,
+  .stage-scan,
+  .stage-envelope {
+    display: none;
   }
 }
