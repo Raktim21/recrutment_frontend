@@ -26,6 +26,28 @@
   font-weight: 700;
 }
 
+/* Section bands: soft gradient seams replace hairline dividers */
+.band {
+  background-image: linear-gradient(
+    180deg,
+    rgba(39, 56, 87, 0.18) 0%,
+    rgba(9, 18, 42, 0) 12%,
+    rgba(9, 18, 42, 0) 88%,
+    rgba(39, 56, 87, 0.18) 100%
+  );
+}
+
+/* Alternating band with a lifted core so neighbouring sections differ */
+.band-tint {
+  background-image: linear-gradient(
+    180deg,
+    rgba(39, 56, 87, 0.18) 0%,
+    rgba(9, 18, 42, 0.55) 14%,
+    rgba(9, 18, 42, 0.55) 86%,
+    rgba(39, 56, 87, 0.18) 100%
+  );
+}
+
 .hero-badge {
   position: absolute;
   bottom: 16px;
@@ -166,7 +188,7 @@
 .cmp-eyebrow {
   margin-bottom: 0.5rem;
   font-size: 0.6875rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #00bfff;

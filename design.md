@@ -6,7 +6,7 @@ Single-page marketing/landing site for a CV/recruitment platform connecting job 
 
 - **HTML**: [index.html](index.html) — single static page, no build step
 - **Styling**: Tailwind CSS via CDN (`cdn.tailwindcss.com`) with an inline `tailwind.config` for custom theme tokens, plus a small custom stylesheet [styles.css](styles.css) for a few things Tailwind utilities don't cover cleanly (carousel dots, hero badge, checkmarks)
-- **Fonts**: Body text uses Google Fonts Inter (400/500/600/700/800), loaded via `<link>` with `preconnect`; headings use **Stack Sans Text** (see [Typography](#typography))
+- **Fonts**: Both families come from Google Fonts in a single `<link>` with `preconnect` — Inter (400/500/600/700/800) for body text, **Stack Sans Text** (600/700) for headings (see [Typography](#typography))
 - **JS**: [script.js](script.js) — vanilla JS, no framework, no dependencies. Handles the hero image carousel and the mobile nav toggle
 - **Assets**: local images only, under `images/hero/` (10 hero carousel photos) and `images/banners/` (5 section banner photos)
 
@@ -20,7 +20,7 @@ Defined in `tailwind.config.theme.extend.colors` in [index.html](index.html):
 |---|---|---|
 | `bg` | `#000000` | Page background (pure black) |
 | `surface` / `card` | `#09122a` | Card backgrounds, form inputs, gradient end |
-| `border` | `#273857` | All hairline borders/dividers |
+| `border` | `#273857` | Component outlines — cards, inputs, pills, table rules. Section dividers no longer use it (see the band classes below) |
 | `accent` | `#2981fb` | Primary buttons, icon chips, active states |
 | `accent-glow` | `#00bfff` | Highlighted text, eyebrow labels, active carousel dot |
 | `success` | `#31c35a` | Checkmark bullets |
@@ -30,21 +30,35 @@ Overall palette is a dark, "tech/SaaS" theme with a blue accent on a pure black 
 
 Custom breakpoint: `xs: 420px` added below Tailwind's default `sm` for very small phones.
 
+### Section bands
+
+Sections are separated by soft gradient seams, not hairlines. Two classes in [styles.css](styles.css) do the work, and every top-level block carries one:
+
+| Class | Effect |
+|---|---|
+| `.band` | Transparent core with a `rgba(39,56,87,0.18)` fade across the top and bottom 12%. Resolves to the black page background in the middle |
+| `.band-tint` | Same edge fade plus a lifted `rgba(9,18,42,0.55)` core, so the section reads as a distinct darker slab |
+
+They alternate down the page (header `band`, hero `band-tint`, how-it-works `band`, why-us `band-tint`, compare `band`, FAQ `band-tint`, CTA `band`, footer `band-tint`) so no two neighbours share a tone, and where two bands meet their fades overlap into a ~20px glow instead of a 1px rule. The hero and CTA `<section>`s are full-bleed for this reason — their `max-w-7xl mx-auto` constraint sits on an inner wrapper, not the section itself.
+
 ## Typography
 
 | Role | Font | Usage |
 |---|---|---|
-| Headline | **Stack Sans Text** | All headings (`h1`–`h3`): hero H1, section H2s, card H3s, eyebrow/label text |
-| Body / paragraph | **Inter** | Body copy, nav links, buttons, form fields, footer — everything that isn't a heading |
+| Headline | **Stack Sans Text** | All headings (`h1`–`h3`): hero H1, section H2s, card/compare/footer H3s, FAQ questions, plus eyebrow/label text |
+| Body / paragraph | **Inter** | Body copy, nav links, buttons, form fields, footer links — everything that isn't a heading or label |
 
-Implementation (done in [index.html](index.html)):
+Implementation (in [index.html](index.html)):
 - `Inter` remains the Tailwind `sans` default (`fontFamily.sans`) for body text
-- Added `fontFamily.heading: ['"Stack Sans Text"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']` to `tailwind.config`
-- Applied the `font-heading` utility class to all 10 `<h1>`/`<h2>`/`<h3>` elements on the page
+- `fontFamily.heading: ['"Stack Sans Text"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']` in `tailwind.config`; Inter is the first fallback, so a failed font load degrades to the body face rather than a system serif
+- Both families load from one combined Google Fonts request with `display=swap`, covered by the existing `preconnect` tags
+- The `font-heading` utility is applied to all 29 headings (1 `<h1>`, 5 `<h2>`, 23 `<h3>`), the 12 `.faq-q` buttons, and all 9 eyebrow labels (7 inline, 2 `.cmp-eyebrow`) — 50 usages in total
 
-⚠️ **Font file not yet loaded**: "Stack Sans Text" is not a Google Fonts family and no font file exists in this repo, so headings currently render in the fallback (`Inter`) until the font is actually sourced. To finish this:
-- If it's a licensed/custom font: add the `.woff2` file(s) under a new `fonts/` folder and declare `@font-face { font-family: "Stack Sans Text"; src: url(...) format("woff2"); }` in [styles.css](styles.css)
-- If it's available via a font CDN (e.g. Adobe Fonts/Typekit): add the corresponding `<link>`/`<script>` embed in [index.html](index.html)'s `<head>`, alongside the existing Google Fonts `<link>` tags
+**Stack Sans Text is a Google Fonts family** — by Koto Studio, originally built for Stack Overflow, added to the catalog in 2025 and free for personal and commercial use. It needs no `@font-face` block, no `fonts/` folder, and no third-party CDN; it comes from the same `fonts.googleapis.com` request as Inter. Its signature is a notched detail on the stems, which is what distinguishes it from Inter at heading sizes. The family also ships a companion **Stack Sans Headline** cut intended for large display sizes — currently unused; the Text cut is applied at every size.
+
+**Heading weight: `font-semibold` (600), everywhere.** Hierarchy is carried by size and tracking alone — the responsive size scale is wide enough (`text-xs` footer columns up to `text-6xl` hero) that weight contrast isn't needed. This replaced an earlier 800/700/600 split that had no documented rationale. Only 600 and 700 are requested from Google Fonts; 700 is currently unused headroom.
+
+The one deliberate exception is the **wordmark** ([index.html](index.html) header): it stays `font-extrabold` (800) and does *not* carry `font-heading`. It's a logotype rather than a heading, and holding it heavier keeps the brand mark distinct now that every real heading sits at 600.
 
 ## Page Structure (top to bottom)
 
@@ -92,7 +106,7 @@ Implementation (done in [index.html](index.html)):
 9. **Footer**
    - **Link columns**: four labelled columns (2-up on phones, 4-up from `md`) — *For Employers* (Search the pool / Start hiring / Employer FAQ), *For Candidates* (Build your profile / Get found / Candidate FAQ), *How it works* (How it works / Why CVONLINE247 / Compare us), *Resources* (Resources / Login / Sign Up). Column headings use `font-heading`, uppercase, tracked-out; links are `text-muted` with a `hover:text-white` transition
    - Half the links resolve to real in-page anchors — `#faq`, plus `#how-it-works`, `#why-us` and `#compare`, ids added to the corresponding `<section>`s for this purpose. The rest are `#` placeholders
-   - **Bottom bar** (separated by a `border-border` hairline): copyright ("© 2026 CVONLINE247. All rights reserved.") with Privacy Policy / Terms of Use links on the left; circular LinkedIn and X icon buttons (`bg-white/5`, `rounded-full`) on the right. Stacks centered below `sm`
+   - **Bottom bar** (separated by a `.band` gradient seam): copyright ("© 2026 CVONLINE247. All rights reserved.") with Privacy Policy / Terms of Use links on the left; circular LinkedIn and X icon buttons (`bg-white/5`, `rounded-full`) on the right. Stacks centered below `sm`
    - The social glyphs are the only *filled* SVGs on the page (`fill="currentColor"`, no stroke) — brand marks don't render correctly in the site's usual stroke style. Each anchor carries an `aria-label` since the icons have no visible text
 
 ## Interactive Behavior ([script.js](script.js))
