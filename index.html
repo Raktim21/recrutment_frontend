@@ -256,62 +256,212 @@
     </section>
 
     <!-- How it works -->
-    <section class="band" id="how-it-works">
+    <section class="band" id="how-it-works" data-switch="employees">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
-        <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-semibold mb-3">How CVONLINE247 works</h2>
-        <p class="text-muted mb-8 sm:mb-12">Simple steps to connect talent with opportunity.</p>
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-8 sm:mb-12">
+          <div>
+            <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-semibold mb-3">How CVONLINE247 works</h2>
+            <p class="text-muted">Simple steps to connect talent with opportunity.</p>
+          </div>
+          <div class="seg self-start sm:self-auto" role="tablist" aria-label="How it works audience">
+            <span class="seg-thumb" aria-hidden="true"></span>
+            <button type="button" role="tab" class="seg-tab" data-mode="employees" id="how-tab-employees" aria-controls="how-panel-employees" aria-selected="true" tabindex="0">For Employees</button>
+            <button type="button" role="tab" class="seg-tab" data-mode="employers" id="how-tab-employers" aria-controls="how-panel-employers" aria-selected="false" tabindex="-1">For Employers</button>
+          </div>
+        </div>
 
-        <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
-          <div class="rounded-2xl overflow-hidden border border-border bg-card">
-            <div class="aspect-[16/10]">
-              <img src="images/banners/3.jpg" alt="Uploading a CV" class="w-full h-full object-cover" />
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-sm font-bold">1</span>
-                <span class="w-9 h-9 rounded-lg bg-accent/20 text-accent flex items-center justify-center">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
-                </span>
+        <div class="seg-stack">
+
+          <!-- For Employees -->
+          <div class="seg-panel is-active" role="tabpanel" data-panel="employees" id="how-panel-employees" aria-labelledby="how-tab-employees">
+            <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+              <div class="rounded-2xl overflow-hidden border border-border bg-card">
+                <div class="relative aspect-[16/10] bg-card" data-carousel data-start="0">
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-100">
+                    <img src="images/banners/1.jpg" alt="Employees collaborating" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/2.jpg" alt="Employers reviewing candidates" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/3.jpg" alt="Uploading a CV" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/4.jpg" alt="Searching for candidates" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/5.jpg" alt="Connecting and hiring" class="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-sm font-bold">1</span>
+                    <span class="w-9 h-9 rounded-lg bg-accent/20 text-accent flex items-center justify-center">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
+                    </span>
+                  </div>
+                  <h3 class="font-heading text-xl font-semibold mb-2">Add your CV</h3>
+                  <p class="text-muted">Create your profile and upload your CV in minutes.</p>
+                </div>
               </div>
-              <h3 class="font-heading text-xl font-semibold mb-2">Add your CV</h3>
-              <p class="text-muted mb-4">Create your profile and upload your CV in minutes.</p>
-              <p class="font-heading text-xs font-semibold tracking-widest text-accent-glow">FOR EMPLOYEES</p>
+
+              <div class="rounded-2xl overflow-hidden border border-border bg-card">
+                <div class="relative aspect-[16/10] bg-card" data-carousel data-start="2">
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-100">
+                    <img src="images/banners/1.jpg" alt="Employees collaborating" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/2.jpg" alt="Employers reviewing candidates" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/3.jpg" alt="Uploading a CV" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/4.jpg" alt="Searching for candidates" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/5.jpg" alt="Connecting and hiring" class="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-sm font-bold">2</span>
+                    <span class="w-9 h-9 rounded-lg bg-accent/20 text-accent flex items-center justify-center">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M21 21l-4-4"/></svg>
+                    </span>
+                  </div>
+                  <h3 class="font-heading text-xl font-semibold mb-2">Get discovered</h3>
+                  <p class="text-muted">Employers search live CVs around the clock, so yours keeps working while you don't.</p>
+                </div>
+              </div>
+
+              <div class="rounded-2xl overflow-hidden border border-border bg-card">
+                <div class="relative aspect-[16/10] bg-card" data-carousel data-start="4">
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-100">
+                    <img src="images/banners/1.jpg" alt="Employees collaborating" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/2.jpg" alt="Employers reviewing candidates" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/3.jpg" alt="Uploading a CV" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/4.jpg" alt="Searching for candidates" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/5.jpg" alt="Connecting and hiring" class="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-sm font-bold">3</span>
+                    <span class="w-9 h-9 rounded-lg bg-accent/20 text-accent flex items-center justify-center">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-1a4 4 0 00-3-3.87M9 20H4v-1a4 4 0 013-3.87m5-5.13a4 4 0 100-8 4 4 0 000 8zm0 0c-2.5 0-7 1.25-7 3.75V19h14v-1.25c0-2.5-4.5-3.75-7-3.75z"/></svg>
+                    </span>
+                  </div>
+                  <h3 class="font-heading text-xl font-semibold mb-2">Get hired</h3>
+                  <p class="text-muted">Talk to employers directly and take the offer that fits.</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="rounded-2xl overflow-hidden border border-border bg-card">
-            <div class="aspect-[16/10]">
-              <img src="images/banners/4.jpg" alt="Searching for candidates" class="w-full h-full object-cover" />
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-sm font-bold">2</span>
-                <span class="w-9 h-9 rounded-lg bg-accent/20 text-accent flex items-center justify-center">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M21 21l-4-4"/></svg>
-                </span>
+          <!-- For Employers -->
+          <div class="seg-panel" role="tabpanel" data-panel="employers" id="how-panel-employers" aria-labelledby="how-tab-employers">
+            <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+              <div class="rounded-2xl overflow-hidden border border-border bg-card">
+                <div class="relative aspect-[16/10] bg-card" data-carousel data-start="1">
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-100">
+                    <img src="images/banners/1.jpg" alt="Employees collaborating" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/2.jpg" alt="Employers reviewing candidates" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/3.jpg" alt="Uploading a CV" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/4.jpg" alt="Searching for candidates" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/5.jpg" alt="Connecting and hiring" class="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-sm font-bold">1</span>
+                    <span class="w-9 h-9 rounded-lg bg-accent/20 text-accent flex items-center justify-center">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
+                    </span>
+                  </div>
+                  <h3 class="font-heading text-xl font-semibold mb-2">Tell us who you need</h3>
+                  <p class="text-muted">Set the role, skills and location you're hiring for.</p>
+                </div>
               </div>
-              <h3 class="font-heading text-xl font-semibold mb-2">Find candidates</h3>
-              <p class="text-muted mb-4">Search millions of CVs and find the perfect match for your roles.</p>
-              <p class="font-heading text-xs font-semibold tracking-widest text-accent-glow">FOR EMPLOYERS</p>
+
+              <div class="rounded-2xl overflow-hidden border border-border bg-card">
+                <div class="relative aspect-[16/10] bg-card" data-carousel data-start="3">
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-100">
+                    <img src="images/banners/1.jpg" alt="Employees collaborating" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/2.jpg" alt="Employers reviewing candidates" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/3.jpg" alt="Uploading a CV" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/4.jpg" alt="Searching for candidates" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/5.jpg" alt="Connecting and hiring" class="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-sm font-bold">2</span>
+                    <span class="w-9 h-9 rounded-lg bg-accent/20 text-accent flex items-center justify-center">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M21 21l-4-4"/></svg>
+                    </span>
+                  </div>
+                  <h3 class="font-heading text-xl font-semibold mb-2">Search live CVs</h3>
+                  <p class="text-muted">Filter millions of CVs and shortlist the right people in minutes.</p>
+                </div>
+              </div>
+
+              <div class="rounded-2xl overflow-hidden border border-border bg-card">
+                <div class="relative aspect-[16/10] bg-card" data-carousel data-start="0">
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-100">
+                    <img src="images/banners/1.jpg" alt="Employees collaborating" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/2.jpg" alt="Employers reviewing candidates" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/3.jpg" alt="Uploading a CV" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/4.jpg" alt="Searching for candidates" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+                    <img src="images/banners/5.jpg" alt="Connecting and hiring" class="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-sm font-bold">3</span>
+                    <span class="w-9 h-9 rounded-lg bg-accent/20 text-accent flex items-center justify-center">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-1a4 4 0 00-3-3.87M9 20H4v-1a4 4 0 013-3.87m5-5.13a4 4 0 100-8 4 4 0 000 8zm0 0c-2.5 0-7 1.25-7 3.75V19h14v-1.25c0-2.5-4.5-3.75-7-3.75z"/></svg>
+                    </span>
+                  </div>
+                  <h3 class="font-heading text-xl font-semibold mb-2">Connect &amp; hire</h3>
+                  <p class="text-muted">Reach candidates directly instead of waiting on applications.</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="rounded-2xl overflow-hidden border border-border bg-card">
-            <div class="aspect-[16/10]">
-              <img src="images/banners/5.jpg" alt="Connecting and hiring" class="w-full h-full object-cover" />
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-sm font-bold">3</span>
-                <span class="w-9 h-9 rounded-lg bg-accent/20 text-accent flex items-center justify-center">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-1a4 4 0 00-3-3.87M9 20H4v-1a4 4 0 013-3.87m5-5.13a4 4 0 100-8 4 4 0 000 8zm0 0c-2.5 0-7 1.25-7 3.75V19h14v-1.25c0-2.5-4.5-3.75-7-3.75z"/></svg>
-                </span>
-              </div>
-              <h3 class="font-heading text-xl font-semibold mb-2">Connect &amp; hire</h3>
-              <p class="text-muted mb-4">Connect, communicate and hire with confidence.</p>
-              <p class="font-heading text-xs font-semibold tracking-widest text-accent-glow">FOR EVERYONE</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
