@@ -125,11 +125,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('[data-faq]').forEach(initFaq);
 
+  const initContactForm = (form) => {
+    const body = form.querySelector('[data-body]');
+    const success = form.querySelector('[data-success]');
+    const fields = [...form.querySelectorAll('[data-field]')];
+    if (!body || !success || !fields.length) return;
+
+    const rules = {
+      name: (value) => (value ? '' : 'Please tell us your name.'),
+      email: (value) =>
+        !value
+          ? 'Please enter your email.'
+          : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+            ? ''
+            : "That email doesn't look right.",
+      message: (value) => (value ? '' : 'Please add a short message.'),
+    };
+
+    const errorFor = (field) => form.querySelector(`[data-error="${field.dataset.field}"]`);
+
+    const setError = (field, message) => {
+      const note = errorFor(field);
+      field.classList.toggle('border-danger', Boolean(message));
+      field.classList.toggle('border-border', !message);
+      field.setAttribute('aria-invalid', String(Boolean(message)));
+      if (!note) return;
+      note.textContent = message;
+      note.hidden = !message;
+    };
+
+    const check = (field) => {
+      const message = rules[field.dataset.field]?.(field.value.trim()) ?? '';
+      setError(field, message);
+      return !message;
+    };
+
+    // Only nag once a field has already failed — never mid-first-attempt.
+    fields.forEach((field) => {
+      field.addEventListener('input', () => {
+        if (field.getAttribute('aria-invalid') === 'true') check(field);
+      });
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const invalid = fields.filter((field) => !check(field));
+      if (invalid.length) {
+        invalid[0].focus();
+        return;
+      }
+
+      // TODO: POST these values to a real endpoint once a backend exists.
+      body.hidden = true;
+      success.hidden = false;
+      success.querySelector('[data-reset]')?.focus();
+    });
+
+    form.querySelector('[data-reset]')?.addEventListener('click', () => {
+      form.reset();
+      fields.forEach((field) => setError(field, ''));
+      success.hidden = true;
+      body.hidden = false;
+      fields[0].focus();
+    });
+  };
+
+  document.querySelectorAll('[data-contact-form]').forEach(initContactForm);
+
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.hidden = !mobileMenu.hidden;
+    const setMenu = (open) => {
+      mobileMenu.hidden = !open;
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+
+    menuBtn.addEventListener('click', () => setMenu(mobileMenu.hidden));
+
+    // Close on navigation, or an anchor target scrolls in behind the open menu.
+    mobileMenu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenu(false);
     });
   }
 });
