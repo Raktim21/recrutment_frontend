@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Employees - CVONLINE247</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          screens: {
+            xs: '420px',
+            sm: '640px',
+            md: '768px',
+            lg: '1024px',
+            xl: '1280px',
+            '2xl': '1536px',
+          },
+          extend: {
+            colors: {
+              bg: '#000000',
+              surface: '#09122a',
+              card: '#09122a',
+              border: '#273857',
+              accent: '#2981fb',
+              'accent-glow': '#00bfff',
+              success: '#31c35a',
+              danger: '#ef4444',
+              muted: '#99a6b8',
+            },
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              heading: ['"Stack Sans Text"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Stack+Sans+Text:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+
+  <body class="bg-bg text-white font-sans antialiased">
+
+    <!-- Header -->
+    <header class="band relative z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2 sm:gap-3 shrink-0">
+          <span class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-accent flex items-center justify-center text-base sm:text-lg">✨</span>
+          <span class="flex flex-col leading-tight">
+            <span class="font-extrabold text-base sm:text-lg tracking-tight">CVONLINE247</span>
+            <span class="text-[11px] sm:text-xs text-muted hidden xs:block">Your CV. Online 24/7.</span>
+          </span>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-foreground/90">
+          <a href="employees.html" class="text-white transition" aria-current="page">For Employees</a>
+          <a href="employers.html" class="hover:text-white transition">For Employers</a>
+          <a href="index.html#" class="hover:text-white transition">Pricing</a>
+          <a href="index.html#faq" class="hover:text-white transition">Resources</a>
+          <a href="contact.html" class="hover:text-white transition">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button class="hidden sm:flex items-center gap-1 text-sm text-foreground/90 hover:text-white">
+            EN
+          </button>
+          <button class="hidden lg:inline-flex px-4 py-2 rounded-lg border border-border text-sm font-medium text-white hover:bg-white/5 transition">Login</button>
+          <button class="hidden lg:inline-flex px-4 py-2 rounded-lg bg-accent text-sm font-semibold text-white hover:brightness-110 transition">Sign Up</button>
+          <button id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg border border-border text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobileMenu" hidden class="lg:hidden band bg-bg px-4 sm:px-6 py-4 flex-col gap-4 [&:not([hidden])]:flex">
+        <nav class="flex flex-col gap-4 text-sm font-medium text-foreground/90">
+          <a href="employees.html" class="text-white transition" aria-current="page">For Employees</a>
+          <a href="employers.html" class="hover:text-white transition">For Employers</a>
+          <a href="index.html#" class="hover:text-white transition">Pricing</a>
+          <a href="index.html#faq" class="hover:text-white transition">Resources</a>
+          <a href="contact.html" class="hover:text-white transition">Contact</a>
+        </nav>
+        <div class="flex items-center gap-3 pt-2">
+          <button class="flex-1 px-4 py-2 rounded-lg border border-border text-sm font-medium text-white hover:bg-white/5 transition">Login</button>
+          <button class="flex-1 px-4 py-2 rounded-lg bg-accent text-sm font-semibold text-white hover:brightness-110 transition">Sign Up</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="band-tint px-4 sm:px-6 py-14 sm:py-20 lg:py-24">
+      <div class="max-w-7xl mx-auto text-center">
+        <span class="inline-flex items-center px-3 sm:px-4 py-1.5 rounded-full border border-border bg-white/5 font-heading text-xs font-semibold tracking-widest text-accent-glow">FOR EMPLOYEES</span>
+        <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold mt-4 mb-4 max-w-3xl mx-auto">Stop applying. Start getting found.</h1>
+        <p class="text-muted max-w-2xl mx-auto text-base sm:text-lg mb-8">
+          Publish your CV once and it works around the clock — visible to employers searching the pool right now, so your next opportunity can come find you instead of the other way around.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <button class="w-full sm:w-auto px-6 py-3 rounded-lg bg-accent font-semibold hover:brightness-110 transition">Add your CV — it's free</button>
+          <a href="index.html#how-it-works" class="w-full sm:w-auto px-6 py-3 rounded-lg border border-border font-semibold hover:bg-white/5 transition text-center">See how it works</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-10 text-xs sm:text-sm text-muted">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-white/5"><span class="check" aria-hidden="true"></span>Free forever</span>
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-white/5"><span class="check" aria-hidden="true"></span>Visible 24/7</span>
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-white/5"><span class="check" aria-hidden="true"></span>You control who sees it</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value pillars -->
+    <section class="band px-4 sm:px-6 py-14 sm:py-20">
+      <div class="max-w-7xl mx-auto">
+        <div class="max-w-2xl mb-10 sm:mb-12">
+          <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-semibold mb-3">Built for people who are done chasing job posts</h2>
+          <p class="text-muted">One profile does the work that dozens of applications used to.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <span class="w-10 h-10 rounded-lg bg-accent/20 text-accent flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            </span>
+            <h3 class="font-heading text-lg font-semibold mb-2">Always on</h3>
+            <p class="text-muted text-sm">Your CV stays live and searchable 24 hours a day — no re-posting, no expiring listings.</p>
+          </div>
+
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <span class="w-10 h-10 rounded-lg bg-accent/20 text-accent flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.5 12S6 5 12 5s9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </span>
+            <h3 class="font-heading text-lg font-semibold mb-2">Real visibility</h3>
+            <p class="text-muted text-sm">No black-hole applicant tracking systems. Employers search live CVs and reach out to real people directly.</p>
+          </div>
+
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <span class="w-10 h-10 rounded-lg bg-accent/20 text-accent flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15a4 4 0 0 0 4-4V6a4 4 0 0 0-8 0v5a4 4 0 0 0 4 4Zm-7-4a7 7 0 0 0 14 0M12 19v3"/></svg>
+            </span>
+            <h3 class="font-heading text-lg font-semibold mb-2">Your rules</h3>
+            <p class="text-muted text-sm">Hide your CV from named companies — your current employer included — and reply only to messages you want.</p>
+          </div>
+
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <span class="w-10 h-10 rounded-lg bg-accent/20 text-accent flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <h3 class="font-heading text-lg font-semibold mb-2">Always free</h3>
+            <p class="text-muted text-sm">Publishing and staying listed costs nothing. Employers pay to search — you never pay to be found.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works, in detail -->
+    <section class="band-tint px-4 sm:px-6 py-14 sm:py-20">
+      <div class="max-w-7xl mx-auto">
+        <div class="max-w-2xl mb-10 sm:mb-12">
+          <span class="inline-flex items-center px-3 sm:px-4 py-1.5 rounded-full border border-border bg-white/5 font-heading text-xs font-semibold tracking-widest text-accent-glow mb-4">HOW IT WORKS</span>
+          <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-semibold mb-3">From upload to offer, in your own time</h2>
+          <p class="text-muted">Five steps, most of them under a minute.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6 sm:gap-8">
+
+          <div class="rounded-2xl border border-border bg-card p-6 sm:p-8 flex gap-5">
+            <span class="w-9 h-9 shrink-0 rounded-full bg-accent flex items-center justify-center text-sm font-bold">1</span>
+            <div>
+              <h3 class="font-heading text-lg font-semibold mb-2">Upload your CV</h3>
+              <p class="text-muted text-sm">Drop in a PDF or Word file. We read the skills, titles and locations out of it automatically, so nothing needs re-typing.</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-border bg-card p-6 sm:p-8 flex gap-5">
+            <span class="w-9 h-9 shrink-0 rounded-full bg-accent flex items-center justify-center text-sm font-bold">2</span>
+            <div>
+              <h3 class="font-heading text-lg font-semibold mb-2">Set your visibility</h3>
+              <p class="text-muted text-sm">Choose who can search you, and hide specific companies — like your current employer — with one click.</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-border bg-card p-6 sm:p-8 flex gap-5">
+            <span class="w-9 h-9 shrink-0 rounded-full bg-accent flex items-center justify-center text-sm font-bold">3</span>
+            <div>
+              <h3 class="font-heading text-lg font-semibold mb-2">Go live in the pool</h3>
+              <p class="text-muted text-sm">Your CV joins millions of others, instantly searchable by employers filtering for exactly what you offer.</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-border bg-card p-6 sm:p-8 flex gap-5">
+            <span class="w-9 h-9 shrink-0 rounded-full bg-accent flex items-center justify-center text-sm font-bold">4</span>
+            <div>
+              <h3 class="font-heading text-lg font-semibold mb-2">Get contacted directly</h3>
+              <p class="text-muted text-sm">Real hiring managers message you — not automated rejections. Your details stay private until you reply.</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-border bg-card p-6 sm:p-8 flex gap-5 sm:col-span-2">
+            <span class="w-9 h-9 shrink-0 rounded-full bg-accent flex items-center justify-center text-sm font-bold">5</span>
+            <div>
+              <h3 class="font-heading text-lg font-semibold mb-2">Talk, compare, and take the offer that fits</h3>
+              <p class="text-muted text-sm">Handle every conversation yourself, weigh up multiple opportunities at once, and decide on your own timeline — no recruiter in the middle.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="band px-4 sm:px-6 py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto">
+        <div class="max-w-2xl mb-8 sm:mb-10">
+          <span class="inline-flex items-center px-3 sm:px-4 py-1.5 rounded-full border border-border bg-white/5 font-heading text-xs font-semibold tracking-widest text-accent-glow mb-4">COMPARISON</span>
+          <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-semibold">Get found, not overlooked</h2>
+        </div>
+
+        <article class="cmp-card">
+          <p class="cmp-eyebrow font-heading">Job boards vs. CVONLINE247</p>
+          <h3 class="font-heading text-xl sm:text-2xl font-semibold">Why job seekers switch</h3>
+          <table class="cmp-table">
+            <caption class="sr-only">How CVONLINE247 compares for employees</caption>
+            <thead>
+              <tr>
+                <th scope="col"><span class="sr-only">Feature</span></th>
+                <th scope="col">Job boards &amp;&nbsp;LinkedIn</th>
+                <th scope="col" class="is-us">CVONLINE247</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">One CV, visible to every employer</th>
+                <td><span class="compare-mark is-no"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span></td>
+                <td class="is-us"><span class="compare-mark is-yes is-featured-mark"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="sr-only">Yes</span></span></td>
+              </tr>
+              <tr>
+                <th scope="row">No applying role by role</th>
+                <td><span class="compare-mark is-no"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span></td>
+                <td class="is-us"><span class="compare-mark is-yes is-featured-mark"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="sr-only">Yes</span></span></td>
+              </tr>
+              <tr>
+                <th scope="row">Employers approach you first</th>
+                <td><span class="compare-mark is-no"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span></td>
+                <td class="is-us"><span class="compare-mark is-yes is-featured-mark"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="sr-only">Yes</span></span></td>
+              </tr>
+              <tr>
+                <th scope="row">Your full CV, not a profile summary</th>
+                <td><span class="compare-mark is-no"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span></td>
+                <td class="is-us"><span class="compare-mark is-yes is-featured-mark"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="sr-only">Yes</span></span></td>
+              </tr>
+              <tr>
+                <th scope="row">Free to publish and stay listed</th>
+                <td><span class="compare-mark is-no"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span></td>
+                <td class="is-us"><span class="compare-mark is-yes is-featured-mark"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="sr-only">Yes</span></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="band-tint px-4 sm:px-6 py-14 sm:py-20">
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] gap-8 lg:gap-12">
+
+        <div>
+          <span class="inline-flex items-center px-3 sm:px-4 py-1.5 rounded-full border border-border bg-white/5 font-heading text-xs font-semibold tracking-widest text-accent-glow">FAQ</span>
+          <h2 class="font-heading text-2xl sm:text-3xl font-semibold mt-4 mb-3">Questions job seekers ask</h2>
+          <p class="text-muted mb-6">
+            The essentials before you upload. Have something else in mind? Get in touch.
+          </p>
+          <a href="contact.html" class="inline-flex items-center gap-2 text-sm font-semibold text-accent-glow hover:text-white transition">
+            Contact us
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div data-faq>
+          <div class="faq-item is-open">
+            <h3 class="font-heading">
+              <button type="button" class="faq-q font-heading" aria-expanded="true" aria-controls="faq-e-1">
+                <span>Is it free to add my CV?</span>
+                <svg class="faq-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </h3>
+            <div class="faq-a" id="faq-e-1"><div>
+              <p>Yes. Adding your CV and keeping it online is free — employers pay to search, you never pay to be found.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="font-heading">
+              <button type="button" class="faq-q font-heading" aria-expanded="false" aria-controls="faq-e-2">
+                <span>Who can see my CV once it's online?</span>
+                <svg class="faq-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </h3>
+            <div class="faq-a" id="faq-e-2"><div>
+              <p>Employers searching the pool for the skills you have. Your contact details stay hidden until you reply to a message, so you decide who reaches you.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="font-heading">
+              <button type="button" class="faq-q font-heading" aria-expanded="false" aria-controls="faq-e-3">
+                <span>Can my current employer find me?</span>
+                <svg class="faq-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </h3>
+            <div class="faq-a" id="faq-e-3"><div>
+              <p>Add them to your hidden list and your CV won't appear in their search results. Looking around stays your business.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="font-heading">
+              <button type="button" class="faq-q font-heading" aria-expanded="false" aria-controls="faq-e-4">
+                <span>Do I still have to apply for jobs?</span>
+                <svg class="faq-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </h3>
+            <div class="faq-a" id="faq-e-4"><div>
+              <p>No — that's the point. Your CV works around the clock, so employers come to you instead of you chasing postings and waiting on replies.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="font-heading">
+              <button type="button" class="faq-q font-heading" aria-expanded="false" aria-controls="faq-e-5">
+                <span>What format should my CV be in?</span>
+                <svg class="faq-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </h3>
+            <div class="faq-a" id="faq-e-5"><div>
+              <p>PDF or Word. We read your skills, job titles and locations out of it and make every one of them searchable.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="font-heading">
+              <button type="button" class="faq-q font-heading" aria-expanded="false" aria-controls="faq-e-6">
+                <span>Can I update or remove my CV later?</span>
+                <svg class="faq-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </h3>
+            <div class="faq-a" id="faq-e-6"><div>
+              <p>Any time. Edit it, pause it or delete it from your dashboard — changes go live straight away.</p>
+            </div></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="band px-4 sm:px-6 pb-14 sm:pb-20 pt-14 sm:pt-20">
+      <div class="max-w-7xl mx-auto rounded-2xl border border-border bg-gradient-to-b from-surface to-bg px-4 sm:px-6 py-12 sm:py-16 text-center">
+        <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4">Your CV works while you don't</h2>
+        <p class="text-muted mb-6 sm:mb-8 max-w-2xl mx-auto">
+          Add it once, stay visible always. Free to publish, free to stay listed.
+        </p>
+        <button class="px-6 py-3 rounded-lg bg-accent font-semibold hover:brightness-110 transition">Add your CV — it's free</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="band">
+
+      <!-- Link columns -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">
+
+        <div>
+          <h3 class="font-heading text-xs font-semibold tracking-wider uppercase text-white mb-4">For Employers</h3>
+          <ul class="flex flex-col gap-3 text-sm text-muted">
+            <li><a href="employers.html" class="hover:text-white transition">Search the pool</a></li>
+            <li><a href="employers.html" class="hover:text-white transition">Start hiring</a></li>
+            <li><a href="index.html#faq" class="hover:text-white transition">Employer FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-heading text-xs font-semibold tracking-wider uppercase text-white mb-4">For Candidates</h3>
+          <ul class="flex flex-col gap-3 text-sm text-muted">
+            <li><a href="employees.html" class="hover:text-white transition">Build your profile</a></li>
+            <li><a href="employees.html" class="hover:text-white transition">Get found</a></li>
+            <li><a href="index.html#faq" class="hover:text-white transition">Candidate FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-heading text-xs font-semibold tracking-wider uppercase text-white mb-4">How it works</h3>
+          <ul class="flex flex-col gap-3 text-sm text-muted">
+            <li><a href="index.html#how-it-works" class="hover:text-white transition">How it works</a></li>
+            <li><a href="index.html#why-us" class="hover:text-white transition">Why CVONLINE247</a></li>
+            <li><a href="index.html#compare" class="hover:text-white transition">Compare us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-heading text-xs font-semibold tracking-wider uppercase text-white mb-4">Resources</h3>
+          <ul class="flex flex-col gap-3 text-sm text-muted">
+            <li><a href="index.html#faq" class="hover:text-white transition">Resources</a></li>
+            <li><a href="index.html#" class="hover:text-white transition">Login</a></li>
+            <li><a href="index.html#" class="hover:text-white transition">Sign Up</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="band-tint">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted">
+          <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center sm:text-left">
+            <p>© 2026 CVONLINE247. All rights reserved.</p>
+            <a href="#" class="hover:text-white transition">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition">Terms of Use</a>
+          </div>
+
+          <div class="flex items-center gap-3 shrink-0">
+            <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 hover:text-white flex items-center justify-center transition">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.64h.05c.53-1 1.83-2.06 3.76-2.06 4.02 0 4.76 2.65 4.76 6.09V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4V9Z"/></svg>
+            </a>
+            <a href="#" aria-label="X" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 hover:text-white flex items-center justify-center transition">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.53 3h3.05l-6.66 7.61L21.75 21h-6.13l-4.8-6.28L5.32 21H2.27l7.12-8.14L2.25 3h6.29l4.34 5.74L17.53 3Zm-1.07 16.17h1.69L7.62 4.73H5.81l10.65 14.44Z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js?v=5"></script>
+  </body>
+</html>
