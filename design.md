@@ -6,7 +6,7 @@ Single-page marketing/landing site for a CV/recruitment platform connecting job 
 
 - **HTML**: [index.html](index.html) — single static page, no build step
 - **Styling**: Tailwind CSS via CDN (`cdn.tailwindcss.com`) with an inline `tailwind.config` for custom theme tokens, plus a small custom stylesheet [styles.css](styles.css) for a few things Tailwind utilities don't cover cleanly (carousel dots, hero badge, checkmarks)
-- **Fonts**: Both families come from Google Fonts in a single `<link>` with `preconnect` — Inter (400/500/600/700/800) for body text, **Stack Sans Text** (600/700) for headings (see [Typography](#typography))
+- **Fonts**: Both families come from Google Fonts in a single `<link>` with `preconnect` — **Inter** (400/500/600/700/800) for all body text and buttons, **Space Grotesk** (600/700) for headings (see [Typography](#typography))
 - **JS**: [script.js](script.js) — vanilla JS, no framework, no dependencies. Handles the hero image carousel and the mobile nav toggle
 - **Assets**: local images only, under `images/hero/` (10 hero carousel photos) and `images/banners/` (5 section banner photos)
 
@@ -45,16 +45,17 @@ They alternate down the page (header `band`, hero `band-tint`, how-it-works `ban
 
 | Role | Font | Usage |
 |---|---|---|
-| Headline | **Stack Sans Text** | All headings (`h1`–`h3`): hero H1, section H2s, card/compare/footer H3s, FAQ questions, plus eyebrow/label text |
-| Body / paragraph | **Inter** | Body copy, nav links, buttons, form fields, footer links — everything that isn't a heading or label |
+| Headline | **Space Grotesk** | All headings (`h1`–`h3`): hero H1, section H2s, card/compare/footer H3s, plus eyebrow/label text and the hero stage's `.stage-eyebrow` / `.stage-title` |
+| Body / button | **Inter** | Body copy, nav links, **all buttons** (CTAs, nav, form submit, the `.seg` toggle and the FAQ question buttons), form fields, footer links — everything that isn't a heading or label |
 
-Implementation (in [index.html](index.html)):
-- `Inter` remains the Tailwind `sans` default (`fontFamily.sans`) for body text
-- `fontFamily.heading: ['"Stack Sans Text"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']` in `tailwind.config`; Inter is the first fallback, so a failed font load degrades to the body face rather than a system serif
-- Both families load from one combined Google Fonts request with `display=swap`, covered by the existing `preconnect` tags
-- The `font-heading` utility is applied to all 29 headings (1 `<h1>`, 5 `<h2>`, 23 `<h3>`), the 12 `.faq-q` buttons, and all 9 eyebrow labels (7 inline, 2 `.cmp-eyebrow`) — 50 usages in total
+Implementation (same block in every page — [index.html](index.html), [employees.html](employees.html), [employers.html](employers.html), [contact.html](contact.html)):
+- `Inter` is the Tailwind `sans` default (`fontFamily.sans`), so body text and buttons get it without any class
+- `fontFamily.heading: ['"Space Grotesk"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']` in `tailwind.config`; Inter is the first fallback, so a failed font load degrades to the body face rather than a system serif
+- Both families load from one combined Google Fonts request (`family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap`), covered by the existing `preconnect` tags
+- [styles.css](styles.css) hardcodes the same heading stack on `.stage-eyebrow` and `.stage-title`, which aren't styled through Tailwind
+- The `font-heading` utility goes on headings and eyebrow labels only — never on a `<button>`. The FAQ `.faq-q` buttons dropped it so every button is Inter. Current usages: 38 on index, 31 on employees, 32 on employers, 18 on contact
 
-**Stack Sans Text is a Google Fonts family** — by Koto Studio, originally built for Stack Overflow, added to the catalog in 2025 and free for personal and commercial use. It needs no `@font-face` block, no `fonts/` folder, and no third-party CDN; it comes from the same `fonts.googleapis.com` request as Inter. Its signature is a notched detail on the stems, which is what distinguishes it from Inter at heading sizes. The family also ships a companion **Stack Sans Headline** cut intended for large display sizes — currently unused; the Text cut is applied at every size.
+**Space Grotesk is a Google Fonts family** — by Florian Karsten, open source under the SIL Open Font License. It needs no `@font-face` block, no `fonts/` folder, and no third-party CDN; it comes from the same `fonts.googleapis.com` request as Inter. It's a proportional grotesque with quirky geometric details (the `a`, `G`, `R`, `y`), which gives headings a distinct technical character next to the neutral Inter body.
 
 **Heading weight: `font-semibold` (600), everywhere.** Hierarchy is carried by size and tracking alone — the responsive size scale is wide enough (`text-xs` footer columns up to `text-6xl` hero) that weight contrast isn't needed. This replaced an earlier 800/700/600 split that had no documented rationale. Only 600 and 700 are requested from Google Fonts; 700 is currently unused headroom.
 
@@ -91,7 +92,7 @@ The one deliberate exception is the **wordmark** ([index.html](index.html) heade
 6. **FAQ section** (`#faq`)
    - Two-column on `lg` and up (`minmax(0,360px)` / `minmax(0,1fr)`): eyebrow pill ("FAQ"), H2 and the audience toggle in a `lg:sticky` left column, question cards on the right. Stacks to one column below `lg`
    - The `.seg` toggle — **For Employees** / **For Employers**, defaulting to employers via `data-switch="employers"`. This is now the only place the segmented control is used. Each audience gets its own 6-question set, in cross-faded `.seg-panel`s
-   - Accordion cards (`.faq-item`) are navy with a `+` icon when closed; the open card fills solid `accent-glow` (`#00bfff`) with `#09122a` text and the `+` rotates 45° into an `×`. One card open at a time, first card open by default
+   - Accordion cards (`.faq-item`) are navy with a `+` icon when closed; question buttons are set in Inter like every other button; the open card fills solid `accent-glow` (`#00bfff`) with `#09122a` text and the `+` rotates 45° into an `×`. One card open at a time, first card open by default
    - ⚠️ Answers are placeholder marketing copy written against the prototype — several make product claims (blocking named employers from search, hidden contact details, private browsing, shared team shortlists, pricing model) that have not been verified against a real product spec
 
 7. **"How CVONLINE247 works" section**

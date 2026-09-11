@@ -30,7 +30,7 @@
             },
             fontFamily: {
               sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-              heading: ['"Stack Sans Text"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              heading: ['"Space Grotesk"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
             },
           },
         },
@@ -38,7 +38,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Stack+Sans+Text:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
   </head>
 
@@ -46,7 +46,7 @@
   <body class="bg-bg text-white font-sans antialiased">
 
     <!-- Header -->
-    <header class="band relative z-50">
+    <header class="band sticky top-0 z-50 bg-bg/90 backdrop-blur">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-2 sm:gap-3 shrink-0">
           <span class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-accent flex items-center justify-center text-base sm:text-lg">✨</span>
@@ -296,7 +296,7 @@
         <div data-faq>
           <div class="faq-item is-open">
             <h3 class="font-heading">
-              <button type="button" class="faq-q font-heading" aria-expanded="true" aria-controls="faq-contact-1">
+              <button type="button" class="faq-q" aria-expanded="true" aria-controls="faq-contact-1">
                 <span>How fast will I hear back?</span>
                 <svg class="faq-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
               </button>
@@ -308,7 +308,7 @@
 
           <div class="faq-item">
             <h3 class="font-heading">
-              <button type="button" class="faq-q font-heading" aria-expanded="false" aria-controls="faq-contact-2">
+              <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-contact-2">
                 <span>Is phone support available?</span>
                 <svg class="faq-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
               </button>
@@ -320,7 +320,7 @@
 
           <div class="faq-item">
             <h3 class="font-heading">
-              <button type="button" class="faq-q font-heading" aria-expanded="false" aria-controls="faq-contact-3">
+              <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-contact-3">
                 <span>I'm hiring for multiple roles — who do I talk to?</span>
                 <svg class="faq-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
               </button>
