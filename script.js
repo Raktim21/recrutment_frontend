@@ -1,3 +1,96 @@
+// Scroll reveal + reading progress. Runs as soon as it's parsed (this script
+// is the last thing in <body>) rather than on DOMContentLoaded, so content is
+// tagged — and hidden — before it gets a chance to paint.
+(() => {
+  const STAGGER = 70;
+  const MAX_DELAY = 420;
+
+  const all = (selector, fn) => document.querySelectorAll(selector).forEach(fn);
+  const tag = (el, variant) => {
+    if (el.hasAttribute('data-reveal') || el.closest('header, .slide')) return;
+    el.dataset.reveal = variant;
+  };
+
+  // Heading blocks: eyebrow, heading, intro and actions cascade together.
+  // Grids and panel stacks are skipped; their children are tagged below.
+  all('section :is(h1, h2)', (heading) => {
+    [...heading.parentElement.children].forEach((child) => {
+      if (!child.matches('.grid, .seg-stack, [data-faq]')) tag(child, 'up');
+    });
+  });
+  all('section .grid > p, section .seg, footer .grid > *', (el) => tag(el, 'up'));
+  all('.hero-stage', (el) => tag(el, 'stage'));
+  all('section .grid > :is(.rounded-2xl, .cmp-card, article), .cmp-card, [data-faq] > .faq-item', (el) =>
+    tag(el, 'card'),
+  );
+
+  // Table rows keep a fixed cascade behind their card instead of joining a batch.
+  all('.cmp-table tbody', (body) => {
+    [...body.rows].forEach((row, i) => {
+      tag(row, 'card');
+      row.style.setProperty('--reveal-delay', `${200 + i * 60}ms`);
+    });
+  });
+
+  const targets = document.querySelectorAll('[data-reveal]');
+  const reveal = (el) => el.classList.add('is-revealed');
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    targets.forEach(reveal);
+  } else {
+    // Whatever enters together staggers in DOM order, so a card row sweeps
+    // left to right and a wrapped mobile row cascades on its own. Only things
+    // entering from below stagger: anything whose top is already past the
+    // viewport (skipped by an anchor jump or a fast fling, often still tucked
+    // under the sticky header) appears at once, so it can't eat the budget.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let n = 0;
+        entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => (a.target.compareDocumentPosition(b.target) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1))
+          .forEach(({ target: el, boundingClientRect }) => {
+            if (!el.style.getPropertyValue('--reveal-delay')) {
+              const delay = boundingClientRect.top < 0 ? 0 : Math.min(n++ * STAGGER, MAX_DELAY);
+              el.style.setProperty('--reveal-delay', `${delay}ms`);
+            }
+            reveal(el);
+            observer.unobserve(el);
+          });
+      },
+      // The huge top margin counts anything already scrolled past as seen, so
+      // anchor jumps and restored scroll positions never leave gaps above.
+      { rootMargin: '10000px 0px -8% 0px', threshold: 0 },
+    );
+    targets.forEach((el) => observer.observe(el));
+  }
+
+  const bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  bar.setAttribute('aria-hidden', 'true');
+  document.body.append(bar);
+
+  const header = document.querySelector('body > header');
+  let ticking = false;
+
+  const update = () => {
+    ticking = false;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.setProperty('--p', max > 0 ? Math.min(window.scrollY / max, 1) : 0);
+    header?.classList.toggle('is-scrolled', window.scrollY > 8);
+  };
+
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   const initCarousel = (root) => {
     const slides = root.querySelectorAll('.slide');

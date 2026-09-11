@@ -825,7 +825,86 @@
   }
 }
 
+/* ------------------------------------------------------------------
+   Scroll reveal — script.js tags section content with data-reveal and
+   adds .is-revealed as each piece enters the viewport. Keyframes rather
+   than transitions, so the targets' own hover / open transitions survive.
+   Only JS-tagged elements are ever hidden, so no-JS visitors see it all.
+   ------------------------------------------------------------------ */
+
+:root {
+  --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal]:not(.is-revealed) {
+  opacity: 0;
+}
+
+.is-revealed[data-reveal] {
+  animation: 0.9s var(--reveal-ease) var(--reveal-delay, 0ms) both;
+}
+
+.is-revealed[data-reveal="up"] {
+  animation-name: reveal-up;
+}
+
+.is-revealed[data-reveal="card"] {
+  animation-name: reveal-card;
+}
+
+.is-revealed[data-reveal="stage"] {
+  animation-name: reveal-stage;
+  animation-duration: 1.1s;
+}
+
+/* Text sharpens out of a light blur; boxes skip the blur, it's costly at size. */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(24px); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+
+@keyframes reveal-card {
+  from { opacity: 0; transform: translateY(28px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes reveal-stage {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Reading progress, pinned above the sticky header */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  height: 2px;
+  background: linear-gradient(90deg, #2981fb, #00bfff);
+  transform: scaleX(var(--p, 0));
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+body > header {
+  transition: box-shadow 0.3s ease;
+}
+
+body > header.is-scrolled {
+  box-shadow: 0 1px 0 rgba(39, 56, 87, 0.6), 0 10px 30px -18px rgba(0, 0, 0, 0.9);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+
+  .scroll-progress {
+    display: none;
+  }
+
   .seg-thumb,
   .seg-panel,
   .seg-tab,
