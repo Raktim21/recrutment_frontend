@@ -57,19 +57,17 @@
         </a>
 
         <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-foreground/90">
-          <a href="employees.html" class="text-white transition" aria-current="page">For Employees</a>
+          <a href="index.html" class="hover:text-white transition">Home</a>
+          <a href="employees.html" class="text-white transition" aria-current="page">For Talent</a>
           <a href="employers.html" class="hover:text-white transition">For Employers</a>
-          <a href="index.html#" class="hover:text-white transition">Pricing</a>
+          <a href="index.html#how-it-works" class="hover:text-white transition">Assessments</a>
           <a href="index.html#faq" class="hover:text-white transition">Resources</a>
-          <a href="contact.html" class="hover:text-white transition">Contact</a>
+          <a href="index.html#why-us" class="hover:text-white transition">About Us</a>
         </nav>
 
         <div class="flex items-center gap-2 sm:gap-3">
-          <button class="hidden sm:flex items-center gap-1 text-sm text-foreground/90 hover:text-white">
-            EN
-          </button>
-          <button class="hidden lg:inline-flex px-4 py-2 rounded-lg border border-border text-sm font-medium text-white hover:bg-white/5 transition">Login</button>
-          <button class="hidden lg:inline-flex px-4 py-2 rounded-lg bg-accent text-sm font-semibold text-white hover:brightness-110 transition">Sign Up</button>
+          <a href="#" class="hidden lg:inline-flex px-3 py-2 text-sm font-medium text-white hover:text-accent-glow transition">Log in</a>
+          <a href="#" class="hidden lg:inline-flex px-5 py-2.5 rounded-lg bg-accent text-sm font-semibold text-white hover:brightness-110 transition">Sign up</a>
           <button id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg border border-border text-white">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
@@ -79,15 +77,16 @@
       <!-- Mobile menu -->
       <div id="mobileMenu" hidden class="lg:hidden band bg-bg px-4 sm:px-6 py-4 flex-col gap-4 [&:not([hidden])]:flex">
         <nav class="flex flex-col gap-4 text-sm font-medium text-foreground/90">
-          <a href="employees.html" class="text-white transition" aria-current="page">For Employees</a>
+          <a href="index.html" class="hover:text-white transition">Home</a>
+          <a href="employees.html" class="text-white transition" aria-current="page">For Talent</a>
           <a href="employers.html" class="hover:text-white transition">For Employers</a>
-          <a href="index.html#" class="hover:text-white transition">Pricing</a>
+          <a href="index.html#how-it-works" class="hover:text-white transition">Assessments</a>
           <a href="index.html#faq" class="hover:text-white transition">Resources</a>
-          <a href="contact.html" class="hover:text-white transition">Contact</a>
+          <a href="index.html#why-us" class="hover:text-white transition">About Us</a>
         </nav>
         <div class="flex items-center gap-3 pt-2">
-          <button class="flex-1 px-4 py-2 rounded-lg border border-border text-sm font-medium text-white hover:bg-white/5 transition">Login</button>
-          <button class="flex-1 px-4 py-2 rounded-lg bg-accent text-sm font-semibold text-white hover:brightness-110 transition">Sign Up</button>
+          <a href="#" class="flex-1 text-center px-4 py-2 rounded-lg border border-border text-sm font-medium text-white hover:bg-white/5 transition">Log in</a>
+          <a href="#" class="flex-1 text-center px-4 py-2 rounded-lg bg-accent text-sm font-semibold text-white hover:brightness-110 transition">Sign up</a>
         </div>
       </div>
     </header>
@@ -376,29 +375,32 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">
 
         <div>
+          <h3 class="font-heading text-xs font-semibold tracking-wider uppercase text-white mb-4">For Talent</h3>
+          <ul class="flex flex-col gap-3 text-sm text-muted">
+            <li><a href="employees.html" class="hover:text-white transition">Build your profile</a></li>
+            <li><a href="employees.html" class="hover:text-white transition">Get found</a></li>
+            <li><a href="index.html#how-it-works" class="hover:text-white transition">Assessments</a></li>
+            <li><a href="index.html#faq" class="hover:text-white transition">Talent FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
           <h3 class="font-heading text-xs font-semibold tracking-wider uppercase text-white mb-4">For Employers</h3>
           <ul class="flex flex-col gap-3 text-sm text-muted">
             <li><a href="employers.html" class="hover:text-white transition">Search the pool</a></li>
             <li><a href="employers.html" class="hover:text-white transition">Start hiring</a></li>
+            <li><a href="index.html#compare" class="hover:text-white transition">Compare us</a></li>
             <li><a href="index.html#faq" class="hover:text-white transition">Employer FAQ</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="font-heading text-xs font-semibold tracking-wider uppercase text-white mb-4">For Candidates</h3>
+          <h3 class="font-heading text-xs font-semibold tracking-wider uppercase text-white mb-4">Company</h3>
           <ul class="flex flex-col gap-3 text-sm text-muted">
-            <li><a href="employees.html" class="hover:text-white transition">Build your profile</a></li>
-            <li><a href="employees.html" class="hover:text-white transition">Get found</a></li>
-            <li><a href="index.html#faq" class="hover:text-white transition">Candidate FAQ</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 class="font-heading text-xs font-semibold tracking-wider uppercase text-white mb-4">How it works</h3>
-          <ul class="flex flex-col gap-3 text-sm text-muted">
+            <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+            <li><a href="index.html#why-us" class="hover:text-white transition">About Us</a></li>
             <li><a href="index.html#how-it-works" class="hover:text-white transition">How it works</a></li>
-            <li><a href="index.html#why-us" class="hover:text-white transition">Why CVONLINE247</a></li>
-            <li><a href="index.html#compare" class="hover:text-white transition">Compare us</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
           </ul>
         </div>
 
@@ -406,8 +408,8 @@
           <h3 class="font-heading text-xs font-semibold tracking-wider uppercase text-white mb-4">Resources</h3>
           <ul class="flex flex-col gap-3 text-sm text-muted">
             <li><a href="index.html#faq" class="hover:text-white transition">Resources</a></li>
-            <li><a href="index.html#" class="hover:text-white transition">Login</a></li>
-            <li><a href="index.html#" class="hover:text-white transition">Sign Up</a></li>
+            <li><a href="#" class="hover:text-white transition">Log in</a></li>
+            <li><a href="#" class="hover:text-white transition">Sign up</a></li>
           </ul>
         </div>
 
