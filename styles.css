@@ -303,16 +303,60 @@
 }
 
 
-/* FAQ accordion */
-.faq-item {
-  border: 1px solid #273857;
-  border-radius: 16px;
-  background: #09122a;
-  transition: background 0.25s ease, border-color 0.25s ease;
+/* Gradient pill + soft halo for a segmented control that heads a section */
+.seg-glow {
+  background: rgba(9, 18, 42, 0.8);
+  box-shadow: 0 10px 40px -12px rgba(41, 129, 251, 0.35);
 }
 
-.faq-item + .faq-item {
-  margin-top: 12px;
+.seg-glow .seg-thumb {
+  background: linear-gradient(90deg, #2981fb, #00bfff);
+  box-shadow: 0 4px 18px -4px rgba(0, 191, 255, 0.6);
+}
+
+/* FAQ accordion — one lifted card, rows split by inset hairlines */
+[data-faq] {
+  border: 1px solid rgba(59, 156, 246, 0.18);
+  border-radius: 24px;
+  background: linear-gradient(180deg, #172a4d 0%, #12213f 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+.faq-item {
+  position: relative;
+  transition: background 0.25s ease;
+}
+
+/* Inset divider, hidden either side of the open row so it reads as one block */
+.faq-item + .faq-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: rgba(153, 166, 184, 0.14);
+  transition: opacity 0.25s ease;
+}
+
+.faq-item.is-open::before,
+.faq-item.is-open + .faq-item::before {
+  opacity: 0;
+}
+
+/* Accent bar marks the open row */
+.faq-item::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  left: 0;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, #2981fb, #00bfff);
+  transform: scaleY(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .faq-q {
@@ -321,22 +365,29 @@
   justify-content: space-between;
   gap: 16px;
   width: 100%;
-  padding: 18px 20px;
+  padding: 20px;
   text-align: left;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
   color: #ffffff;
   cursor: pointer;
-  transition: color 0.25s ease;
 }
 
 .faq-icon {
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  color: #99a6b8;
+  color: #2981fb;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s ease;
+}
+
+.faq-item:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.faq-item:hover .faq-icon {
+  color: #00bfff;
 }
 
 /* Animates height without measuring it in JS */
@@ -352,25 +403,23 @@
 }
 
 .faq-a p {
-  padding: 0 20px 18px;
-  color: #99a6b8;
-  line-height: 1.6;
-  transition: color 0.25s ease;
+  max-width: 60ch;
+  padding: 0 20px 22px;
+  color: #b4c0d3;
+  line-height: 1.65;
 }
 
 .faq-item.is-open {
-  background: #00bfff;
-  border-color: #00bfff;
+  background: rgba(41, 129, 251, 0.07);
 }
 
-.faq-item.is-open .faq-q,
-.faq-item.is-open .faq-a p {
-  color: #09122a;
+.faq-item.is-open::after {
+  transform: scaleY(1);
 }
 
 .faq-item.is-open .faq-icon {
   transform: rotate(45deg);
-  color: #09122a;
+  color: #00bfff;
 }
 
 .faq-item.is-open .faq-a {
@@ -380,23 +429,45 @@
 
 .faq-q:focus-visible {
   outline: 2px solid #00bfff;
-  outline-offset: 2px;
+  outline-offset: -4px;
   border-radius: 16px;
 }
 
-/* A cyan ring is invisible against the open card */
-.faq-item.is-open .faq-q:focus-visible {
-  outline-color: #09122a;
+.faq-more {
+  margin-top: 28px;
+  text-align: center;
+  color: #99a6b8;
+  font-size: 0.9375rem;
+}
+
+.faq-more a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 4px;
+  font-weight: 600;
+  color: #00bfff;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.faq-more a:hover {
+  color: #ffffff;
+  gap: 10px;
 }
 
 @media (min-width: 640px) {
+  .faq-item + .faq-item::before {
+    left: 32px;
+    right: 32px;
+  }
+
   .faq-q {
-    padding: 20px 24px;
-    font-size: 1.0625rem;
+    padding: 26px 32px;
+    font-size: 1.125rem;
   }
 
   .faq-a p {
-    padding: 0 24px 20px;
+    padding: 0 32px 26px;
   }
 }
 
@@ -484,6 +555,8 @@ body > header.is-scrolled {
   .seg-panel,
   .seg-tab,
   .faq-item,
+  .faq-item::before,
+  .faq-item::after,
   .faq-icon,
   .faq-a {
     transition-duration: 0.01ms;

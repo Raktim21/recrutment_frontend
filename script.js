@@ -20,7 +20,7 @@
   });
   all('section .grid > p, section .seg, footer .grid > *', (el) => tag(el, 'up'));
   all('.hero-stage', (el) => tag(el, 'stage'));
-  all('section .grid > :is(.rounded-2xl, .cmp-card, article), .cmp-card, [data-faq] > .faq-item', (el) =>
+  all('section .grid > :is(.rounded-2xl, .cmp-card, article), .cmp-card, [data-faq]', (el) =>
     tag(el, 'card'),
   );
 

@@ -39,7 +39,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=2" />
+    <link rel="stylesheet" href="styles.css?v=3" />
   </head>
 
 
@@ -610,20 +610,19 @@
 
     <!-- FAQ -->
     <section class="band-tint" id="faq" data-switch="employers">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
-        <div class="grid lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] gap-8 sm:gap-10 lg:gap-16 items-start">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 py-14 sm:py-20 lg:py-24">
 
-          <!-- Heading + audience toggle -->
-          <div class="lg:sticky lg:top-10">
-            <span class="inline-flex items-center px-3 sm:px-4 py-1.5 rounded-full border border-border bg-white/5 font-heading text-xs font-semibold tracking-widest text-accent-glow mb-5 sm:mb-6">FAQ</span>
-            <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4">Frequently asked questions</h2>
-            <p class="text-muted mb-6 sm:mb-8 max-w-sm">Everything about getting your CV seen — or finding the person behind it.</p>
-            <div class="seg" role="tablist" aria-label="FAQ audience">
-              <span class="seg-thumb" aria-hidden="true"></span>
-              <button type="button" role="tab" class="seg-tab" data-mode="employees" id="faq-tab-employees" aria-controls="faq-panel-employees" aria-selected="false" tabindex="-1">For Employees</button>
-              <button type="button" role="tab" class="seg-tab" data-mode="employers" id="faq-tab-employers" aria-controls="faq-panel-employers" aria-selected="true" tabindex="0">For Employers</button>
-            </div>
+        <!-- Heading + audience toggle -->
+        <div class="text-center mb-8 sm:mb-10">
+          <span class="inline-flex items-center px-3 sm:px-4 py-1.5 rounded-full border border-border bg-white/5 font-heading text-xs font-semibold tracking-widest text-accent-glow mb-5 sm:mb-6">FAQ</span>
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.1] mb-4">Questions? Answered.</h2>
+          <p class="text-muted mb-7 sm:mb-8 max-w-md mx-auto">Everything about getting your CV seen — or finding the person behind it.</p>
+          <div class="seg seg-glow" role="tablist" aria-label="FAQ audience">
+            <span class="seg-thumb" aria-hidden="true"></span>
+            <button type="button" role="tab" class="seg-tab" data-mode="employees" id="faq-tab-employees" aria-controls="faq-panel-employees" aria-selected="false" tabindex="-1">For Employees</button>
+            <button type="button" role="tab" class="seg-tab" data-mode="employers" id="faq-tab-employers" aria-controls="faq-panel-employers" aria-selected="true" tabindex="0">For Employers</button>
           </div>
+        </div>
 
           <!-- Question sets -->
           <div class="seg-stack">
@@ -783,7 +782,14 @@
             </div>
 
           </div>
-        </div>
+
+          <p class="faq-more">
+            Still have questions?
+            <a href="contact.html">Talk to our team
+              <svg class="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+            </a>
+          </p>
+
       </div>
     </section>
 
