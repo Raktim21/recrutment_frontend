@@ -110,7 +110,17 @@ The one deliberate exception is the **wordmark** ([index.html](index.html) heade
    - **Bottom bar** (separated by a `.band` gradient seam): copyright ("© 2026 CVONLINE247. All rights reserved.") with Privacy Policy / Terms of Use links on the left; circular LinkedIn and X icon buttons (`bg-white/5`, `rounded-full`) on the right. Stacks centered below `sm`
    - The social glyphs are the only *filled* SVGs on the page (`fill="currentColor"`, no stroke) — brand marks don't render correctly in the site's usual stroke style. Each anchor carries an `aria-label` since the icons have no visible text
 
+## Assessments & Resources pages
+
+[assessments.html](assessments.html) and [resources.html](resources.html) share one layout: a compact `band-tint` hero, a `band` library section, then the talent-page CTA block. Header/footer are copied from [talent.html](talent.html); the header and footer `Assessments` / `Resources` links on every page now point here, and the current page's link carries `aria-current="page"`.
+
+- **Library** (`[data-library]`, `data-per-page="12"`): search box (`.lib-search`), category chips (`.lib-chip`, `aria-pressed`; first chip is "All"), a `grid sm:2 / lg:3 / xl:4` of image cards (`.lib-card` — 4:3 photo, cyan `category · length` meta line, H3, 3-line-clamped description), an empty-state line, an `aria-live` result count and a JS-built pager (`.lib-page`).
+- 24 cards per page across 5 categories. Assessments: Skills, Personality & Strengths, Cognitive, Workplace Behaviour, Career Fit. Resources: CV & Profile, Interview Prep, Career Growth, Job Search, For Employers. Card links are `#` placeholders, and the photos reuse `images/hero` / `images/banners` until dedicated images exist.
+- `?category=<id>` preselects a chip (for example `resources.html?category=career-growth`, used by talent.html's "Explore Learning Options").
+
 ## Interactive Behavior ([script.js](script.js))
+
+- **Library** (`initLibrary`, one per `[data-library]`): matches cards on chip category plus a debounced (150ms) text search over each card's text, then paginates the matches; cards off the current page get `[hidden]`. Any change to the chip or search resets to page 1. The pager hides when there is only one page, disables prev/next at the ends, and scrolls back to the library on page change (`scroll-margin-top` clears the sticky header). The whole library reveals as one block, so cards hidden by paging never wait on an observer that has already fired.
 
 - **Hero carousel**: cross-fades between `.slide` elements via Tailwind opacity classes (`opacity-0`/`opacity-100`, `transition-opacity duration-700`). Auto-plays on a 4-second `setInterval`; dot clicks call the same `goTo(index)` function and reset the active dot styling. No pause-on-hover or swipe/touch support.
 - **Segmented control** (`initSwitch`, one per `[data-switch]` root — used by the FAQ section only; the comparison section dropped its toggle in favour of two side-by-side cards): switching tabs sets `aria-selected` + roving `tabindex`, toggles `.is-active` on the matching `[data-panel]`, and slides the `.seg-thumb` to the active tab's `offsetLeft`/`offsetWidth` (re-measured on `resize` and after `document.fonts.ready`). ArrowLeft/ArrowRight move between tabs. Both panels sit in the same CSS grid cell (`.seg-stack`), so the section height is fixed to the taller panel and the page never shifts when toggling. Each selection dispatches a `switch:change` CustomEvent on the root so dependent components can react. Transitions collapse under `prefers-reduced-motion`.

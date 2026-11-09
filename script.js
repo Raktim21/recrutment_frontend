@@ -15,12 +15,14 @@
   // Grids and panel stacks are skipped; their children are tagged below.
   all('section :is(h1, h2)', (heading) => {
     [...heading.parentElement.children].forEach((child) => {
-      if (!child.matches('.grid, .seg-stack, [data-faq]')) tag(child, 'up');
+      if (!child.matches('.grid, .seg-stack, [data-faq], [data-library]')) tag(child, 'up');
     });
   });
   all('section .grid > p, section .seg, footer .grid > *', (el) => tag(el, 'up'));
   all('.hero-stage', (el) => tag(el, 'stage'));
-  all('section .grid > :is(.rounded-2xl, .cmp-card, article), .cmp-card, [data-faq]', (el) =>
+  // The library reveals as one block: its cards get re-hidden by paging, so
+  // they must never depend on an observer that has already fired.
+  all('section .grid > :is(.rounded-2xl, .cmp-card, article), .cmp-card, [data-faq], [data-library]', (el) =>
     tag(el, 'card'),
   );
 
@@ -284,6 +286,108 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   document.querySelectorAll('[data-contact-form]').forEach(initContactForm);
+
+  // Searchable, filterable, paginated card grid (assessments.html, resources.html).
+  const initLibrary = (root) => {
+    const cards = [...root.querySelectorAll('[data-card]')];
+    const chips = [...root.querySelectorAll('[data-filter]')];
+    const search = root.querySelector('[data-search]');
+    const pager = root.querySelector('[data-pager]');
+    const empty = root.querySelector('[data-empty]');
+    const status = root.querySelector('[data-status]');
+    if (!cards.length) return;
+
+    const perPage = Number(root.dataset.perPage) || 12;
+    const text = new Map(cards.map((card) => [card, card.textContent.toLowerCase().replace(/\s+/g, ' ')]));
+    const state = { query: '', filter: 'all', page: 1 };
+
+    const chevron = (d) =>
+      `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="${d}"/></svg>`;
+
+    const pageButton = (label, page, { current = false, disabled = false, aria } = {}) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'lib-page';
+      btn.innerHTML = label;
+      btn.dataset.page = page;
+      btn.disabled = disabled;
+      if (aria) btn.setAttribute('aria-label', aria);
+      if (current) btn.setAttribute('aria-current', 'page');
+      return btn;
+    };
+
+    const renderPager = (pages) => {
+      if (!pager) return;
+      pager.replaceChildren();
+      pager.style.display = pages > 1 ? '' : 'none';
+      if (pages <= 1) return;
+      pager.append(
+        pageButton(chevron('m15 18-6-6 6-6'), state.page - 1, { disabled: state.page === 1, aria: 'Previous page' }),
+        ...Array.from({ length: pages }, (_, i) =>
+          pageButton(String(i + 1), i + 1, { current: i + 1 === state.page, aria: `Page ${i + 1}` }),
+        ),
+        pageButton(chevron('m9 18 6-6-6-6'), state.page + 1, { disabled: state.page === pages, aria: 'Next page' }),
+      );
+    };
+
+    const apply = () => {
+      const matches = cards.filter(
+        (card) =>
+          (state.filter === 'all' || card.dataset.category === state.filter) &&
+          (!state.query || text.get(card).includes(state.query)),
+      );
+      const pages = Math.max(1, Math.ceil(matches.length / perPage));
+      state.page = Math.min(Math.max(state.page, 1), pages);
+      const shown = new Set(matches.slice((state.page - 1) * perPage, state.page * perPage));
+
+      cards.forEach((card) => {
+        card.hidden = !shown.has(card);
+      });
+      if (empty) empty.hidden = matches.length > 0;
+      if (status) {
+        status.textContent = matches.length
+          ? `${matches.length} result${matches.length === 1 ? '' : 's'}, page ${state.page} of ${pages}`
+          : 'No results';
+      }
+      renderPager(pages);
+    };
+
+    const setFilter = (filter) => {
+      if (!chips.some((chip) => chip.dataset.filter === filter)) filter = 'all';
+      state.filter = filter;
+      state.page = 1;
+      chips.forEach((chip) => chip.setAttribute('aria-pressed', String(chip.dataset.filter === filter)));
+      apply();
+    };
+
+    chips.forEach((chip) => chip.addEventListener('click', () => setFilter(chip.dataset.filter)));
+
+    let debounce;
+    search?.addEventListener('input', () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => {
+        state.query = search.value.trim().toLowerCase().replace(/\s+/g, ' ');
+        state.page = 1;
+        apply();
+      }, 150);
+    });
+
+    pager?.addEventListener('click', (event) => {
+      const btn = event.target.closest('.lib-page');
+      if (!btn || btn.disabled) return;
+      state.page = Number(btn.dataset.page);
+      apply();
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      root.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      // Keep keyboard focus in the pager after it's rebuilt.
+      pager.querySelector('[aria-current="page"]')?.focus({ preventScroll: true });
+    });
+
+    // Deep link: resources.html?category=career-growth preselects a chip.
+    setFilter(new URLSearchParams(window.location.search).get('category') || 'all');
+  };
+
+  document.querySelectorAll('[data-library]').forEach(initLibrary);
 
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');

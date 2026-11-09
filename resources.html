@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resources - CVONLINE247</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          screens: {
+            xs: '420px',
+            sm: '640px',
+            md: '768px',
+            lg: '1024px',
+            xl: '1280px',
+            '2xl': '1536px',
+          },
+          extend: {
+            colors: {
+              bg: '#000000',
+              surface: '#09122a',
+              card: '#09122a',
+              border: '#273857',
+              accent: '#2981fb',
+              'accent-glow': '#00bfff',
+              success: '#31c35a',
+              danger: '#ef4444',
+              muted: '#99a6b8',
+            },
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              heading: ['"Space Grotesk"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=4" />
+  </head>
+
+
+  <body class="bg-bg text-white font-sans antialiased">
+
+    <!-- Header -->
+    <header class="band sticky top-0 z-50 bg-bg/90 backdrop-blur">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2 sm:gap-3 shrink-0">
+          <span class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-accent flex items-center justify-center text-base sm:text-lg">✨</span>
+          <span class="flex flex-col leading-tight">
+            <span class="font-extrabold text-base sm:text-lg tracking-tight">CVONLINE247</span>
+            <span class="text-[11px] sm:text-xs text-muted hidden xs:block">Your CV. Online 24/7.</span>
+          </span>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-foreground/90">
+          <a href="talent.html" class="hover:text-white transition">For Talent</a>
+          <a href="employers.html" class="hover:text-white transition">For Employers</a>
+          <a href="assessments.html" class="hover:text-white transition">Assessments</a>
+          <a href="resources.html" class="text-white transition" aria-current="page">Resources</a>
+          <a href="index.html#why-us" class="hover:text-white transition">About Us</a>
+        </nav>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a href="#" class="hidden lg:inline-flex px-3 py-2 text-sm font-medium text-white hover:text-accent-glow transition">Log in</a>
+          <a href="#" class="hidden lg:inline-flex px-5 py-2.5 rounded-lg bg-accent text-sm font-semibold text-white hover:brightness-110 transition">Sign up</a>
+          <button id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg border border-border text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobileMenu" hidden class="lg:hidden band bg-bg px-4 sm:px-6 py-4 flex-col gap-4 [&:not([hidden])]:flex">
+        <nav class="flex flex-col gap-4 text-sm font-medium text-foreground/90">
+          <a href="talent.html" class="hover:text-white transition">For Talent</a>
+          <a href="employers.html" class="hover:text-white transition">For Employers</a>
+          <a href="assessments.html" class="hover:text-white transition">Assessments</a>
+          <a href="resources.html" class="text-white transition" aria-current="page">Resources</a>
+          <a href="index.html#why-us" class="hover:text-white transition">About Us</a>
+        </nav>
+        <div class="flex items-center gap-3 pt-2">
+          <a href="#" class="flex-1 text-center px-4 py-2 rounded-lg border border-border text-sm font-medium text-white hover:bg-white/5 transition">Log in</a>
+          <a href="#" class="flex-1 text-center px-4 py-2 rounded-lg bg-accent text-sm font-semibold text-white hover:brightness-110 transition">Sign up</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="band-tint px-4 sm:px-6 py-12 sm:py-16 lg:py-20">
+      <div class="max-w-7xl mx-auto">
+        <div class="max-w-3xl">
+          <span class="inline-flex items-center px-3 sm:px-4 py-1.5 rounded-full border border-border bg-white/5 font-heading text-xs font-semibold tracking-widest text-accent-glow">RESOURCES</span>
+          <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold mt-4 mb-4">Practical guidance for <span class="text-accent">every step of your career.</span></h1>
+          <p class="text-muted text-base sm:text-lg">Guides, checklists and tips for building your profile, preparing for interviews and hiring fairly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Library -->
+    <section class="band px-4 sm:px-6 py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="sr-only">Resource library</h2>
+        <div data-library data-per-page="12" class="lib-root">
+
+          <!-- Toolbar -->
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
+            <label class="lib-search">
+              <span class="sr-only">Search resources</span>
+              <svg class="w-5 h-5 shrink-0 text-muted" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="m20 20-3.5-3.5"/></svg>
+              <input type="search" data-search placeholder="Search topics…" autocomplete="off" />
+            </label>
+            <div class="flex flex-wrap gap-2" role="group" aria-label="Filter by category">
+              <button type="button" class="lib-chip" data-filter="all" aria-pressed="true">All</button>
+              <button type="button" class="lib-chip" data-filter="cv-profile" aria-pressed="false">CV &amp; Profile</button>
+              <button type="button" class="lib-chip" data-filter="interview" aria-pressed="false">Interview Prep</button>
+              <button type="button" class="lib-chip" data-filter="career-growth" aria-pressed="false">Career Growth</button>
+              <button type="button" class="lib-chip" data-filter="job-search" aria-pressed="false">Job Search</button>
+              <button type="button" class="lib-chip" data-filter="employers" aria-pressed="false">For Employers</button>
+            </div>
+          </div>
+
+          <!-- Cards -->
+          <ul class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" data-grid>
+            <li data-card data-category="cv-profile">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/1.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">CV &amp; Profile · 6 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Writing a Standout CV</h3>
+                  <p class="text-muted text-sm lib-clamp">Structure your CV so your most relevant experience is the first thing a recruiter sees.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="interview">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/4.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">Interview Prep · 5 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">The STAR Interview Method</h3>
+                  <p class="text-muted text-sm lib-clamp">Answer behavioural questions with clear Situation, Task, Action and Result stories.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="career-growth">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/7.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">Career Growth · 7 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Planning Your Next Move</h3>
+                  <p class="text-muted text-sm lib-clamp">Map where you are now, where you want to be and the steps that connect the two.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="job-search">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/10.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">Job Search · 5 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Getting Found by Employers</h3>
+                  <p class="text-muted text-sm lib-clamp">Use the right keywords, skills and preferences so the right roles come to you.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="employers">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/banners/3.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">For Employers · 6 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Writing Inclusive Job Ads</h3>
+                  <p class="text-muted text-sm lib-clamp">Describe roles in plain, welcoming language that widens your talent pool.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="cv-profile">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/2.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">CV &amp; Profile · 4 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">A Profile Summary That Works</h3>
+                  <p class="text-muted text-sm lib-clamp">Write two or three sentences that sum up who you are and what you offer.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="interview">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/5.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">Interview Prep · 5 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Preparing for Video Interviews</h3>
+                  <p class="text-muted text-sm lib-clamp">Set up your space, test your tech and keep the conversation natural on camera.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="career-growth">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/8.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">Career Growth · 6 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Building Your Network</h3>
+                  <p class="text-muted text-sm lib-clamp">Grow genuine professional relationships without it feeling like a sales pitch.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="job-search">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/banners/1.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">Job Search · 5 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Researching an Employer</h3>
+                  <p class="text-muted text-sm lib-clamp">Find out about culture, values and recent news before you reply to an employer.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="employers">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/banners/4.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">For Employers · 7 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Fair Shortlisting</h3>
+                  <p class="text-muted text-sm lib-clamp">Use consistent, job-relevant criteria to compare candidates and reduce bias.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="cv-profile">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/3.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">CV &amp; Profile · 6 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Showing Transferable Skills</h3>
+                  <p class="text-muted text-sm lib-clamp">Translate experience from other roles, study or volunteering into skills employers value.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="interview">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/6.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">Interview Prep · 4 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Questions to Ask the Interviewer</h3>
+                  <p class="text-muted text-sm lib-clamp">Thoughtful questions that help you judge the role and leave a strong impression.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="career-growth">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/9.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">Career Growth · 8 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Changing Careers</h3>
+                  <p class="text-muted text-sm lib-clamp">Test a new direction, close skill gaps and tell a confident story about your switch.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="job-search">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/banners/2.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">Job Search · 6 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Returning to Work</h3>
+                  <p class="text-muted text-sm lib-clamp">Explain a career break with confidence and refresh your skills for today’s workplace.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="employers">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/banners/5.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">For Employers · 7 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Structured Interviews</h3>
+                  <p class="text-muted text-sm lib-clamp">Plan questions and scoring in advance so every candidate is assessed the same way.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="cv-profile">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/4.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">CV &amp; Profile · 5 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Common CV Mistakes</h3>
+                  <p class="text-muted text-sm lib-clamp">Avoid the errors that make strong candidates easy to overlook.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="interview">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/7.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">Interview Prep · 5 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Answering Salary Questions</h3>
+                  <p class="text-muted text-sm lib-clamp">Research market rates and talk about pay expectations with confidence.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="career-growth">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/10.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">Career Growth · 6 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Asking for a Promotion</h3>
+                  <p class="text-muted text-sm lib-clamp">Gather evidence of your impact and plan the conversation with your manager.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="job-search">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/banners/3.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">Job Search · 4 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Staying Motivated While Searching</h3>
+                  <p class="text-muted text-sm lib-clamp">Keep momentum with small daily goals and a routine that protects your wellbeing.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="employers">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/1.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">For Employers · 5 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Making a Great First Contact</h3>
+                  <p class="text-muted text-sm lib-clamp">Reach out to candidates with messages that are clear, personal and respectful.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="cv-profile">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/5.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">CV &amp; Profile · 5 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Highlighting Achievements</h3>
+                  <p class="text-muted text-sm lib-clamp">Turn duties into results with numbers, outcomes and the difference you made.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="interview">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/8.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">Interview Prep · 4 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Handling Interview Nerves</h3>
+                  <p class="text-muted text-sm lib-clamp">Simple preparation and breathing techniques to help you stay calm and focused.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="career-growth">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/banners/1.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">Career Growth · 6 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Learning on the Job</h3>
+                  <p class="text-muted text-sm lib-clamp">Make the most of feedback, stretch projects and mentoring to keep growing.</p>
+                </span>
+              </a>
+            </li>
+
+            <li data-card data-category="employers">
+              <a href="#" class="lib-card group">
+                <span class="lib-media"><img src="images/hero/2.jpg" alt="" loading="lazy" decoding="async" /></span>
+                <span class="flex flex-col flex-1 p-5">
+                  <span class="lib-meta">For Employers · 6 min read</span>
+                  <h3 class="font-heading text-lg font-semibold mt-2 mb-2 group-hover:text-accent-glow transition">Onboarding New Hires</h3>
+                  <p class="text-muted text-sm lib-clamp">Help new starters settle in quickly with a clear first-week and first-month plan.</p>
+                </span>
+              </a>
+            </li>
+          </ul>
+
+          <p class="text-muted text-center py-16" data-empty hidden>No resources match your search.</p>
+          <p class="sr-only" aria-live="polite" data-status></p>
+
+          <!-- Pagination (built by script.js) -->
+          <nav class="flex items-center justify-center gap-2 mt-10" aria-label="Pagination" data-pager></nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="band px-4 sm:px-6 pb-14 sm:pb-20">
+      <div class="max-w-7xl mx-auto rounded-2xl border border-border bg-gradient-to-b from-surface to-bg px-6 sm:px-10 py-10 sm:py-14 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+        <div class="max-w-2xl">
+          <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-semibold mb-3">Put your learning to work</h2>
+          <p class="text-muted">Build a profile that reflects your skills, experience and goals — and keep it growing.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a href="#" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-accent font-semibold hover:brightness-110 transition">
+            Create Your Profile
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+          <a href="assessments.html" class="w-full sm:w-auto px-6 py-3 rounded-lg border border-border font-semibold hover:bg-white/5 transition text-center">Explore Assessments</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="band">
+
+      <!-- Link columns -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">
+
+        <div>
+          <h3 class="font-heading text-xs font-semibold tracking-wider uppercase text-white mb-4">For Talent</h3>
+          <ul class="flex flex-col gap-3 text-sm text-muted">
+            <li><a href="talent.html" class="hover:text-white transition">Build your profile</a></li>
+            <li><a href="talent.html" class="hover:text-white transition">Get found</a></li>
+            <li><a href="assessments.html" class="hover:text-white transition">Assessments</a></li>
+            <li><a href="index.html#faq" class="hover:text-white transition">Talent FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-heading text-xs font-semibold tracking-wider uppercase text-white mb-4">For Employers</h3>
+          <ul class="flex flex-col gap-3 text-sm text-muted">
+            <li><a href="employers.html" class="hover:text-white transition">Search the pool</a></li>
+            <li><a href="employers.html" class="hover:text-white transition">Start hiring</a></li>
+            <li><a href="index.html#compare" class="hover:text-white transition">Compare us</a></li>
+            <li><a href="index.html#faq" class="hover:text-white transition">Employer FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-heading text-xs font-semibold tracking-wider uppercase text-white mb-4">Company</h3>
+          <ul class="flex flex-col gap-3 text-sm text-muted">
+            <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+            <li><a href="index.html#why-us" class="hover:text-white transition">About Us</a></li>
+            <li><a href="index.html#how-it-works" class="hover:text-white transition">How it works</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-heading text-xs font-semibold tracking-wider uppercase text-white mb-4">Resources</h3>
+          <ul class="flex flex-col gap-3 text-sm text-muted">
+            <li><a href="resources.html" class="text-white transition" aria-current="page">Resources</a></li>
+            <li><a href="#" class="hover:text-white transition">Log in</a></li>
+            <li><a href="#" class="hover:text-white transition">Sign up</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="band-tint">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted">
+          <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center sm:text-left">
+            <p>© 2026 CVONLINE247. All rights reserved.</p>
+            <a href="#" class="hover:text-white transition">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition">Terms of Use</a>
+          </div>
+
+          <div class="flex items-center gap-3 shrink-0">
+            <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 hover:text-white flex items-center justify-center transition">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.64h.05c.53-1 1.83-2.06 3.76-2.06 4.02 0 4.76 2.65 4.76 6.09V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4V9Z"/></svg>
+            </a>
+            <a href="#" aria-label="X" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 hover:text-white flex items-center justify-center transition">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.53 3h3.05l-6.66 7.61L21.75 21h-6.13l-4.8-6.28L5.32 21H2.27l7.12-8.14L2.25 3h6.29l4.34 5.74L17.53 3Zm-1.07 16.17h1.69L7.62 4.73H5.81l10.65 14.44Z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js?v=7"></script>
+  </body>
+</html>
