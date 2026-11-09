@@ -144,6 +144,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('[data-carousel]').forEach(initCarousel);
 
+  // Hero headline: cycles through its versions in a loop. Pauses while the
+  // tab is hidden or the visitor is hovering/focused in the hero copy, and
+  // stays on the first headline when reduced motion is requested.
+  const initHeadlineRotator = (root) => {
+    const items = [...root.querySelectorAll('.headline-item')];
+    if (items.length < 2) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let active = 0;
+    let timer;
+    let paused = false;
+
+    const next = () => {
+      const prev = items[active];
+      active = (active + 1) % items.length;
+      const curr = items[active];
+
+      prev.classList.remove('is-active');
+      prev.classList.add('is-leaving');
+      prev.setAttribute('aria-hidden', 'true');
+
+      curr.classList.remove('is-leaving');
+      curr.classList.add('is-active');
+      curr.removeAttribute('aria-hidden');
+
+      // Once the exit finishes, drop the class so the item re-enters from below next time.
+      setTimeout(() => prev.classList.remove('is-leaving'), 650);
+    };
+
+    const start = () => {
+      clearInterval(timer);
+      if (!paused && !document.hidden) timer = setInterval(next, 4500);
+    };
+    const stop = () => clearInterval(timer);
+
+    const copy = root.closest('h1')?.parentElement || root;
+    copy.addEventListener('mouseenter', () => { paused = true; stop(); });
+    copy.addEventListener('mouseleave', () => { paused = false; start(); });
+    copy.addEventListener('focusin', () => { paused = true; stop(); });
+    copy.addEventListener('focusout', () => { paused = false; start(); });
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+
+    start();
+  };
+
+  document.querySelectorAll('[data-headline-rotator]').forEach(initHeadlineRotator);
+
   const initSwitch = (root) => {
     const tabs = [...root.querySelectorAll('[data-mode]')];
     const panels = [...root.querySelectorAll('[data-panel]')];

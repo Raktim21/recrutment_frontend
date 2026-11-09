@@ -39,7 +39,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=4" />
   </head>
 
 
@@ -101,9 +101,21 @@
             Online 24 hours a day, 7 days a week
           </span>
 
-          <h1 class="font-heading text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] sm:leading-[1.05] tracking-tight mb-4 sm:mb-6">
-            The world's home<br class="hidden sm:block" />
-            for <span class="text-accent">every CV</span>
+          <h1 aria-label="The world's home for every CV" class="font-heading text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] sm:leading-[1.05] tracking-tight mb-4 sm:mb-6">
+            <span class="headline-rotator" data-headline-rotator>
+              <span class="headline-item is-active">
+                The world's home<br class="hidden sm:block" />
+                for <span class="text-accent">every CV</span>
+              </span>
+              <span class="headline-item" aria-hidden="true">
+                Great talent never<br class="hidden sm:block" />
+                <span class="text-accent">clocks out</span>
+              </span>
+              <span class="headline-item" aria-hidden="true">
+                Your next role is<br class="hidden sm:block" />
+                <span class="text-accent">one CV away</span>
+              </span>
+            </span>
           </h1>
 
           <p class="text-muted text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 max-w-xl">
@@ -873,7 +885,7 @@
       </div>
     </footer>
 
-    <script src="script.js?v=6"></script>
+    <script src="script.js?v=7"></script>
   </body>
   
 </html>
