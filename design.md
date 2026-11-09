@@ -48,7 +48,7 @@ They alternate down the page (header `band`, hero `band-tint`, how-it-works `ban
 | Headline | **Space Grotesk** | All headings (`h1`–`h3`): hero H1, section H2s, card/compare/footer H3s, plus eyebrow/label text and the hero stage's `.stage-eyebrow` / `.stage-title` |
 | Body / button | **Inter** | Body copy, nav links, **all buttons** (CTAs, nav, form submit, the `.seg` toggle and the FAQ question buttons), form fields, footer links — everything that isn't a heading or label |
 
-Implementation (same block in every page — [index.html](index.html), [employees.html](employees.html), [employers.html](employers.html), [contact.html](contact.html)):
+Implementation (same block in every page — [index.html](index.html), [talent.html](talent.html), [employers.html](employers.html), [contact.html](contact.html)):
 - `Inter` is the Tailwind `sans` default (`fontFamily.sans`), so body text and buttons get it without any class
 - `fontFamily.heading: ['"Space Grotesk"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']` in `tailwind.config`; Inter is the first fallback, so a failed font load degrades to the body face rather than a system serif
 - Both families load from one combined Google Fonts request (`family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap`), covered by the existing `preconnect` tags
